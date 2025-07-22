@@ -1,0 +1,351 @@
+[debug] [2025-07-22T11:29:24.323Z] : 
+[debug] [2025-07-22T11:29:24.324Z] : ----------------------------------------------------------------------
+[debug] [2025-07-22T11:29:24.324Z] : Command:      C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\zcatalyst-cli\lib\bin\catalyst.js deploy
+[debug] [2025-07-22T11:29:24.325Z] : CLI Version:  1.20.1
+[debug] [2025-07-22T11:29:24.326Z] : Platform:     win32
+[debug] [2025-07-22T11:29:24.326Z] : Node Version: v18.18.2
+[debug] [2025-07-22T11:29:24.327Z] : Time:         Tue Jul 22 2025 16:59:24 GMT+0530 (India Standard Time)
+[debug] [2025-07-22T11:29:24.328Z] : ----------------------------------------------------------------------
+[debug] [2025-07-22T11:29:24.328Z] : 
+[debug] [2025-07-22T11:29:24.936Z] : > authorizing via signed-in user option
+[debug] [2025-07-22T11:29:24.937Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.webapp.ALL","ZohoCatalyst.appsail.Update"]
+[debug] [2025-07-22T11:29:24.972Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/20263000000010319 
+
+[debug] [2025-07-22T11:29:25.793Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:29:28 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:29:25.805Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/environment 
+
+[debug] [2025-07-22T11:29:26.297Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:29:29 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:29:26.942Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/webapp 
+
+[debug] [2025-07-22T11:29:41.967Z] : <<<< HTTP RESPONSE : 500
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:29:44 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:29:41.971Z] : Response Body : "{\"status\":\"failure\",\"data\":{\"message\":\"Internal server error has occurred. Please try again after some time\",\"error_code\":\"INTERNAL_SERVER_ERROR\"}}"
+
+[debug] [2025-07-22T11:29:41.980Z] : client deploy unsuccessful, reason : CatalystError: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+    at exports.default (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\errorResponse.js:25:12)
+    at API._parseResponse (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:159:60)
+    at API.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:242:38)
+    at Generator.next (<anonymous>)
+    at C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:27:12)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:240:53)
+    at Request.emit (node:events:529:35)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\node_modules\request\request.js:1154:10)
+[warn] [2025-07-22T11:29:41.984Z] : ‼ client: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+[info] [2025-07-22T11:29:41.986Z] : 
+[error] [2025-07-22T11:29:41.987Z] : × client: deploy skipped
+[info] [2025-07-22T11:29:41.988Z] : 
+[error] [2025-07-22T11:29:41.989Z] : × No components deployed!
+[error] [2025-07-22T11:29:41.998Z] : × HTTP Error: 500, Internal server error has occurred. Please try again after some time
+[debug] [2025-07-22T11:29:41.999Z] : Error Stack: CatalystError: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+    at exports.default (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\errorResponse.js:25:12)
+    at API._parseResponse (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:159:60)
+    at API.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:242:38)
+    at Generator.next (<anonymous>)
+    at C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:27:12)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:240:53)
+    at Request.emit (node:events:529:35)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\node_modules\request\request.js:1154:10)
+[debug] [2025-07-22T11:29:42.000Z] : Error Context: {
+  "body": {
+    "status": "failure",
+    "data": {
+      "message": "Internal server error has occurred. Please try again after some time",
+      "error_code": "INTERNAL_SERVER_ERROR"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": "{\"status\":\"failure\",\"data\":{\"message\":\"Internal server error has occurred. Please try again after some time\",\"error_code\":\"INTERNAL_SERVER_ERROR\"}}",
+    "headers": {
+      "server": "ZGS",
+      "date": "Tue, 22 Jul 2025 11:29:44 GMT",
+      "content-type": "application/vnd.catalyst.v2+json",
+      "transfer-encoding": "chunked",
+      "connection": "close",
+      "set-cookie": [
+        "zalb_3a750b85f1=411f509465b028e7e235eac6930aaab2; Path=/; Secure; HttpOnly",
+        "ZD_CSRF_TOKEN=22d5d9e6-7a93-4f94-8af7-cd5d1d7b6ae1;path=/;SameSite=None;Secure;priority=high",
+        "_zcsr_tmp=22d5d9e6-7a93-4f94-8af7-cd5d1d7b6ae1;path=/;SameSite=Strict;Secure;priority=high"
+      ],
+      "x-content-type-options": "nosniff",
+      "cache-control": "private,no-cache,no-store,max-age=0,must-revalidate",
+      "pragma": "no-cache",
+      "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "x-frame-options": "DENY",
+      "strict-transport-security": "max-age=64072000; includeSubDomains; preload"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "api.catalyst.zoho.in",
+        "port": 443,
+        "hostname": "api.catalyst.zoho.in",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/baas/v1/project/20263000000010319/webapp",
+        "path": "/baas/v1/project/20263000000010319/webapp",
+        "href": "https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/webapp"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2025-07-22T11:29:42.001Z] : Error Status: 500
+[info] [2025-07-22T11:29:42.002Z] : Kindly contact Catalyst support [support@zohocatalyst.com] if you need any further assistance
+[debug] [2025-07-22T11:29:42.004Z] : EXEC ENDED with event: deploy, message: success
+[debug] [2025-07-22T11:29:42.005Z] : TOTAL DURATION OF COMMAND EXEC : 17079
+[debug] [2025-07-22T11:29:42.121Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.in/baas/v1/cli/logs 
+<request body omitted>
+
+[debug] [2025-07-22T11:29:50.593Z] : <<<< HTTP RESPONSE : 400
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:29:53 GMT","content-type":"application/json;charset=ISO-8859-1","content-length":"148","connection":"close","x-content-type-options":"nosniff","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:29:50.594Z] : Response Body : {"status":"failure","data":{"error_code":"INPUT_SIZE_MORE_THAN_ALLOWED","message":"Please check if the size of the input is in the correct range"}}
+
+[debug] [2025-07-22T11:29:50.596Z] : Unable to send debug log to server: HTTP Error: 400, Please check if the size of the input is in the correct range
+[debug] [2025-07-22T11:34:53.411Z] : 
+[debug] [2025-07-22T11:34:53.413Z] : ----------------------------------------------------------------------
+[debug] [2025-07-22T11:34:53.413Z] : Command:      C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\zcatalyst-cli\lib\bin\catalyst.js deploy
+[debug] [2025-07-22T11:34:53.414Z] : CLI Version:  1.20.1
+[debug] [2025-07-22T11:34:53.414Z] : Platform:     win32
+[debug] [2025-07-22T11:34:53.415Z] : Node Version: v18.18.2
+[debug] [2025-07-22T11:34:53.417Z] : Time:         Tue Jul 22 2025 17:04:53 GMT+0530 (India Standard Time)
+[debug] [2025-07-22T11:34:53.417Z] : ----------------------------------------------------------------------
+[debug] [2025-07-22T11:34:53.417Z] : 
+[debug] [2025-07-22T11:34:54.112Z] : > authorizing via signed-in user option
+[debug] [2025-07-22T11:34:54.113Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.webapp.ALL","ZohoCatalyst.appsail.Update"]
+[debug] [2025-07-22T11:34:54.148Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/20263000000010319 
+
+[debug] [2025-07-22T11:34:54.744Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:34:57 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:34:54.757Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/environment 
+
+[debug] [2025-07-22T11:34:55.234Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:34:58 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:34:55.709Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/webapp 
+
+[debug] [2025-07-22T11:34:59.440Z] : <<<< HTTP RESPONSE : 500
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:35:02 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:34:59.444Z] : Response Body : "{\"status\":\"failure\",\"data\":{\"message\":\"Internal server error has occurred. Please try again after some time\",\"error_code\":\"INTERNAL_SERVER_ERROR\"}}"
+
+[debug] [2025-07-22T11:34:59.452Z] : client deploy unsuccessful, reason : CatalystError: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+    at exports.default (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\errorResponse.js:25:12)
+    at API._parseResponse (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:159:60)
+    at API.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:242:38)
+    at Generator.next (<anonymous>)
+    at C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:27:12)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:240:53)
+    at Request.emit (node:events:529:35)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\node_modules\request\request.js:1154:10)
+[warn] [2025-07-22T11:34:59.456Z] : ‼ client: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+[info] [2025-07-22T11:34:59.457Z] : 
+[error] [2025-07-22T11:34:59.459Z] : × client: deploy skipped
+[info] [2025-07-22T11:34:59.459Z] : 
+[error] [2025-07-22T11:34:59.461Z] : × No components deployed!
+[error] [2025-07-22T11:34:59.467Z] : × HTTP Error: 500, Internal server error has occurred. Please try again after some time
+[debug] [2025-07-22T11:34:59.468Z] : Error Stack: CatalystError: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+    at exports.default (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\errorResponse.js:25:12)
+    at API._parseResponse (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:159:60)
+    at API.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:242:38)
+    at Generator.next (<anonymous>)
+    at C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:27:12)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:240:53)
+    at Request.emit (node:events:529:35)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\node_modules\request\request.js:1154:10)
+[debug] [2025-07-22T11:34:59.469Z] : Error Context: {
+  "body": {
+    "status": "failure",
+    "data": {
+      "message": "Internal server error has occurred. Please try again after some time",
+      "error_code": "INTERNAL_SERVER_ERROR"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": "{\"status\":\"failure\",\"data\":{\"message\":\"Internal server error has occurred. Please try again after some time\",\"error_code\":\"INTERNAL_SERVER_ERROR\"}}",
+    "headers": {
+      "server": "ZGS",
+      "date": "Tue, 22 Jul 2025 11:35:02 GMT",
+      "content-type": "application/vnd.catalyst.v2+json",
+      "transfer-encoding": "chunked",
+      "connection": "close",
+      "set-cookie": [
+        "zalb_3a750b85f1=411f509465b028e7e235eac6930aaab2; Path=/; Secure; HttpOnly",
+        "ZD_CSRF_TOKEN=a1f43b7d-6902-48bf-8e98-e6d095fcb06a;path=/;SameSite=None;Secure;priority=high",
+        "_zcsr_tmp=a1f43b7d-6902-48bf-8e98-e6d095fcb06a;path=/;SameSite=Strict;Secure;priority=high"
+      ],
+      "x-content-type-options": "nosniff",
+      "cache-control": "private,no-cache,no-store,max-age=0,must-revalidate",
+      "pragma": "no-cache",
+      "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "x-frame-options": "DENY",
+      "strict-transport-security": "max-age=64072000; includeSubDomains; preload"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "api.catalyst.zoho.in",
+        "port": 443,
+        "hostname": "api.catalyst.zoho.in",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/baas/v1/project/20263000000010319/webapp",
+        "path": "/baas/v1/project/20263000000010319/webapp",
+        "href": "https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/webapp"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2025-07-22T11:34:59.470Z] : Error Status: 500
+[info] [2025-07-22T11:34:59.471Z] : Kindly contact Catalyst support [support@zohocatalyst.com] if you need any further assistance
+[debug] [2025-07-22T11:34:59.474Z] : EXEC ENDED with event: deploy, message: success
+[debug] [2025-07-22T11:34:59.474Z] : TOTAL DURATION OF COMMAND EXEC : 5378
+[debug] [2025-07-22T11:34:59.598Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.in/baas/v1/cli/logs 
+<request body omitted>
+
+[debug] [2025-07-22T11:35:02.236Z] : <<<< HTTP RESPONSE : 400
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:35:04 GMT","content-type":"application/json;charset=ISO-8859-1","content-length":"148","connection":"close","x-content-type-options":"nosniff","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:35:02.238Z] : Response Body : {"status":"failure","data":{"error_code":"INPUT_SIZE_MORE_THAN_ALLOWED","message":"Please check if the size of the input is in the correct range"}}
+
+[debug] [2025-07-22T11:35:02.240Z] : Unable to send debug log to server: HTTP Error: 400, Please check if the size of the input is in the correct range
+[debug] [2025-07-22T11:37:15.534Z] : 
+[debug] [2025-07-22T11:37:15.538Z] : ----------------------------------------------------------------------
+[debug] [2025-07-22T11:37:15.540Z] : Command:      C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\zcatalyst-cli\lib\bin\catalyst.js deploy
+[debug] [2025-07-22T11:37:15.541Z] : CLI Version:  1.20.1
+[debug] [2025-07-22T11:37:15.543Z] : Platform:     win32
+[debug] [2025-07-22T11:37:15.544Z] : Node Version: v18.18.2
+[debug] [2025-07-22T11:37:15.548Z] : Time:         Tue Jul 22 2025 17:07:15 GMT+0530 (India Standard Time)
+[debug] [2025-07-22T11:37:15.549Z] : ----------------------------------------------------------------------
+[debug] [2025-07-22T11:37:15.550Z] : 
+[debug] [2025-07-22T11:37:16.080Z] : > authorizing via signed-in user option
+[debug] [2025-07-22T11:37:16.081Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.webapp.ALL","ZohoCatalyst.appsail.Update"]
+[debug] [2025-07-22T11:37:16.120Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/20263000000010319 
+
+[debug] [2025-07-22T11:37:17.309Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:37:20 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:37:17.323Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/environment 
+
+[debug] [2025-07-22T11:37:17.884Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:37:20 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:37:18.733Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/webapp 
+
+[debug] [2025-07-22T11:37:21.980Z] : <<<< HTTP RESPONSE : 500
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:37:24 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"close","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:37:21.983Z] : Response Body : "{\"status\":\"failure\",\"data\":{\"message\":\"Internal server error has occurred. Please try again after some time\",\"error_code\":\"INTERNAL_SERVER_ERROR\"}}"
+
+[debug] [2025-07-22T11:37:21.989Z] : client deploy unsuccessful, reason : CatalystError: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+    at exports.default (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\errorResponse.js:25:12)
+    at API._parseResponse (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:159:60)
+    at API.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:242:38)
+    at Generator.next (<anonymous>)
+    at C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:27:12)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:240:53)
+    at Request.emit (node:events:529:35)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\node_modules\request\request.js:1154:10)
+[warn] [2025-07-22T11:37:21.992Z] : ‼ client: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+[info] [2025-07-22T11:37:21.995Z] : 
+[error] [2025-07-22T11:37:21.997Z] : × client: deploy skipped
+[info] [2025-07-22T11:37:21.998Z] : 
+[error] [2025-07-22T11:37:21.998Z] : × No components deployed!
+[error] [2025-07-22T11:37:22.002Z] : × HTTP Error: 500, Internal server error has occurred. Please try again after some time
+[debug] [2025-07-22T11:37:22.002Z] : Error Stack: CatalystError: HTTP Error: 500, Internal server error has occurred. Please try again after some time
+    at exports.default (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\errorResponse.js:25:12)
+    at API._parseResponse (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:159:60)
+    at API.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:242:38)
+    at Generator.next (<anonymous>)
+    at C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:27:12)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\lib\internal\api.js:240:53)
+    at Request.emit (node:events:529:35)
+    at Request.<anonymous> (C:\Users\Nithish\AppData\Local\nvm\v18.18.2\node_modules\zcatalyst-cli\node_modules\request\request.js:1154:10)
+[debug] [2025-07-22T11:37:22.003Z] : Error Context: {
+  "body": {
+    "status": "failure",
+    "data": {
+      "message": "Internal server error has occurred. Please try again after some time",
+      "error_code": "INTERNAL_SERVER_ERROR"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": "{\"status\":\"failure\",\"data\":{\"message\":\"Internal server error has occurred. Please try again after some time\",\"error_code\":\"INTERNAL_SERVER_ERROR\"}}",
+    "headers": {
+      "server": "ZGS",
+      "date": "Tue, 22 Jul 2025 11:37:24 GMT",
+      "content-type": "application/vnd.catalyst.v2+json",
+      "transfer-encoding": "chunked",
+      "connection": "close",
+      "set-cookie": [
+        "zalb_3a750b85f1=ed010f63633be60a322039283f31a645; Path=/; Secure; HttpOnly",
+        "ZD_CSRF_TOKEN=751bc1f3-8fb3-4a78-8e1e-6785da6de646;path=/;SameSite=None;Secure;priority=high",
+        "_zcsr_tmp=751bc1f3-8fb3-4a78-8e1e-6785da6de646;path=/;SameSite=Strict;Secure;priority=high"
+      ],
+      "x-content-type-options": "nosniff",
+      "cache-control": "private,no-cache,no-store,max-age=0,must-revalidate",
+      "pragma": "no-cache",
+      "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "x-frame-options": "DENY",
+      "strict-transport-security": "max-age=64072000; includeSubDomains; preload"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "api.catalyst.zoho.in",
+        "port": 443,
+        "hostname": "api.catalyst.zoho.in",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/baas/v1/project/20263000000010319/webapp",
+        "path": "/baas/v1/project/20263000000010319/webapp",
+        "href": "https://api.catalyst.zoho.in/baas/v1/project/20263000000010319/webapp"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2025-07-22T11:37:22.003Z] : Error Status: 500
+[info] [2025-07-22T11:37:22.004Z] : Kindly contact Catalyst support [support@zohocatalyst.com] if you need any further assistance
+[debug] [2025-07-22T11:37:22.005Z] : EXEC ENDED with event: deploy, message: success
+[debug] [2025-07-22T11:37:22.005Z] : TOTAL DURATION OF COMMAND EXEC : 5949
+[debug] [2025-07-22T11:37:22.076Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.in/baas/v1/cli/logs 
+<request body omitted>
+
+[debug] [2025-07-22T11:37:24.156Z] : <<<< HTTP RESPONSE : 400
+Response Headers: {"server":"ZGS","date":"Tue, 22 Jul 2025 11:37:26 GMT","content-type":"application/json;charset=ISO-8859-1","content-length":"148","connection":"close","x-content-type-options":"nosniff","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-22T11:37:24.158Z] : Response Body : {"status":"failure","data":{"error_code":"INPUT_SIZE_MORE_THAN_ALLOWED","message":"Please check if the size of the input is in the correct range"}}
+
+[debug] [2025-07-22T11:37:24.161Z] : Unable to send debug log to server: HTTP Error: 400, Please check if the size of the input is in the correct range
