@@ -98,7 +98,9 @@ a {
 .nav-links a.active::after {
   width: 100%;
 }
-
+.home-name{
+  font-family: popins, sans-serif;
+}
 .botao {
   display: flex;
   /* make flex container */
@@ -186,11 +188,15 @@ a {
 .botao .texto {
   display: inline-block;
 }
+
 .download-container {
   display: flex;
-  justify-content: flex-start;  /* align to left */
-  margin-top: 0.5rem;           /* spacing under icons */
-  width: auto;                  /* no full width */
+  justify-content: flex-start;
+  /* align to left */
+  margin-top: 0.5rem;
+  /* spacing under icons */
+  width: auto;
+  /* no full width */
 }
 
 .botao {
@@ -201,15 +207,18 @@ a {
   justify-content: center;
   border-radius: 20px;
   transition: all 0.3s ease;
-  transform-origin: center;   /* important! shrink from center */
+  transform-origin: center;
+  /* important! shrink from center */
 }
 
 /* hover effect */
 .botao:hover {
-  width: 50px;                /* target size */
+  width: 50px;
+  /* target size */
   height: 50px;
   border-radius: 50%;
-  margin-left: 37.5px;        /* (125 - 50) / 2 → keeps center fixed */
+  margin-left: 37.5px;
+  /* (125 - 50) / 2 → keeps center fixed */
   margin-right: 37.5px;
 }
 
@@ -688,8 +697,8 @@ footer {
     font-size: 2rem;
     text-align: center;
     position: relative;
-    top:10px;
-
+    top: 10px;
+    font-family: 'Poppins', sans-serif;
   }
 
   .typewriter {
@@ -716,7 +725,7 @@ footer {
 
   .profile-img {
     width: 450px;
-    max-height: 290px;
+    max-height: 280px;
   }
 
   .section {
@@ -760,10 +769,13 @@ footer {
     right: 20px;
   }
 }
+
 /* Only for big screens (desktop) */
 @media screen and (min-width: 1024px) {
   .profile-img {
-    margin-top: 80px;   /* push image down so navbar doesn’t cut it */
-    max-width: 350px;   /* optional: keep image from being huge */
+    margin-top: 80px;
+    /* push image down so navbar doesn’t cut it */
+    max-width: 350px;
+    /* optional: keep image from being huge */
   }
 }
