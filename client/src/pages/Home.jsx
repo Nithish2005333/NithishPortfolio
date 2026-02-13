@@ -17,7 +17,7 @@ import {
     SiPython, SiGit, SiCanva, SiGithub, SiLinkedin, SiInstagram, SiGmail
 } from 'react-icons/si';
 import { FaJava, FaFileExcel, FaFileWord, FaFilePowerpoint } from 'react-icons/fa';
-import LightRays from '../components/LightRays';
+
 import { useState, useRef, useMemo } from 'react';
 
 const Home = () => {
@@ -127,22 +127,7 @@ const Home = () => {
     return (
         <div className="home-page">
             {/* Background LightRays - Premium consistency */}
-            <div style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 0,
-                pointerEvents: 'none',
-                opacity: 0.3
-            }}>
-                <LightRays
-                    raysOrigin="top-center"
-                    raysColor="#6366f1"
-                    raysSpeed={0.5}
-                />
-            </div>
+
 
             <Navbar />
 
