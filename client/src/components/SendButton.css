@@ -1,0 +1,136 @@
+.send-button {
+    --text: #ffffff;
+    --plane: #6366f1;
+    --background: rgba(99, 102, 241, 0.1);
+    --border: rgba(99, 102, 241, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 0;
+    padding: 0;
+    width: 140px;
+    height: 60px;
+    background: none;
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.send-button:hover {
+    transform: translateY(-2px);
+}
+
+.send-button svg.btn-layer {
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 2;
+    pointer-events: none;
+    fill: var(--background);
+    stroke: var(--border);
+    stroke-width: 1px;
+}
+
+.send-button svg.plane {
+    z-index: 3;
+    position: absolute;
+    left: 32px;
+    display: block;
+    width: 26px;
+    height: 28px;
+    fill: var(--plane);
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+    transform: translate3d(0, 0, 0);
+    perspective: 500px;
+}
+
+.send-button>ul {
+    list-style: none;
+    padding: 0 5px 0 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.send-button>ul>li {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    padding-left: 40px;
+    font: 600 16px "Inter", sans-serif;
+    transition: transform 0.3s ease 0s, opacity 0.3s ease 0s;
+    color: #fff;
+}
+
+.send-button>ul>li:first-child {
+    opacity: 1;
+}
+
+.send-button>ul>li:last-child {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+}
+
+.send-button.active svg.plane {
+    animation: 2s orbit alternate linear;
+}
+
+.send-button.active>ul>li {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease 1.2s, opacity 0.3s ease 1.2s;
+}
+
+.send-button.active>ul>li:first-child {
+    opacity: 0;
+}
+
+.send-button.active>ul>li:last-child {
+    opacity: 1;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate3d(1, 0, 0, 0deg) translateZ(60px) scale3d(1.1, 1.1, 1);
+        animation-timing-function: ease-in;
+    }
+
+    10% {
+        z-index: 3;
+        transform: rotate3d(1, 0.6, 0, -10deg) translateZ(60px) scale3d(1, 1, 1);
+        animation-timing-function: ease-out;
+    }
+
+    20% {
+        z-index: 3;
+        transform: rotate3d(1, 0.6, 0, 30deg) translateZ(60px) scale3d(1, 1, 1);
+        animation-timing-function: ease-out;
+    }
+
+    30% {
+        z-index: 3;
+        transform: rotate3d(1, 0.6, 0, 35deg) translateZ(60px) scale3d(1, 1, 1);
+    }
+
+    40% {
+        z-index: 1;
+        transform: rotate3d(1, 0.6, 0, 120deg) translateZ(60px) scale3d(0.7, 0.7, 1);
+    }
+
+    70% {
+        z-index: 1;
+        transform: rotate3d(1, 0.6, 0, 240deg) translateZ(60px) scale3d(0.7, 0.7, 1);
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        z-index: 3;
+        transform: rotate3d(1, 0, 0, 360deg) translateZ(60px) scale3d(1, 1, 1);
+    }
+}

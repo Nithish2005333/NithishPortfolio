@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#4338ca;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feFlood flood-color="#a5b4fc" flood-opacity="0.8" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="#ffffff" />
+  <circle cx="50" cy="50" r="46" fill="#000000" />
+  <circle cx="50" cy="50" r="44" fill="url(#bgGradient)" />
+  <text x="50" y="66" 
+        font-family="'Georgia', serif" 
+        font-weight="900" 
+        font-size="56" 
+        fill="#ffffff" 
+        text-anchor="middle"
+        filter="url(#glow)"
+        style="letter-spacing:-2px">N</text>
+</svg>
