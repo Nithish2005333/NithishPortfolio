@@ -9,6 +9,7 @@ import SmoothCursor from './components/SmoothCursor';
 import ClickParticles from './components/ClickParticles';
 import TargetCursor from './components/TargetCursor';
 import FloatingLines from './components/FloatingLines';
+import ScrollToTop from './components/ScrollToTop';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
 
     return (
         <Router>
+            <ScrollToTop />
             <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -2, opacity: 0.4 }}>
                 <FloatingLines
                     enabledWaves={["top", "middle", "bottom"]}

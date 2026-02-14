@@ -175,7 +175,11 @@ export const ChromaGrid = ({
         if (isPlaceholder) {
             navigate(-1);
         } else if (url) {
-            window.open(url, '_blank', 'noopener,noreferrer');
+            if (url.startsWith('/')) {
+                navigate(url);
+            } else {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
         }
     };
 
