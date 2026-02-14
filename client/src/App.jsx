@@ -13,6 +13,14 @@ import { useState, useEffect } from 'react';
 
 function App() {
     const [isTargetActive, setIsTargetActive] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -36,8 +44,8 @@ function App() {
                     parallax={true}
                 />
             </div>
-            <SmoothCursor hidden={isTargetActive} />
-            <ClickParticles particleCount={20} />
+            {!isMobile && <SmoothCursor hidden={isTargetActive} />}
+            {!isMobile && <ClickParticles particleCount={20} />}
             <TargetCursor
                 targetSelector="a, button, .btn-primary, .btn-secondary, .cursor-target, .pc-card-shell"
                 spinDuration={2}

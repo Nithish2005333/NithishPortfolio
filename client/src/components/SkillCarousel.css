@@ -340,33 +340,72 @@
     right: 10%;
 }
 
-/* Modal Styling */
+/* Modal Styling - Full overlay like "ask permission" dialogs
+   Rendered via Portal to body - entire screen blurred/dimmed, only popup visible */
 .skill-modal-overlay {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 9998;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
+    overflow-y: auto;
+    isolation: isolate;
+}
+
+.skill-modal-overlay::-webkit-scrollbar {
+    width: 6px;
+}
+
+.skill-modal-overlay::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.skill-modal-overlay::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    border-radius: 20px;
 }
 
 .skill-modal-backdrop {
-    position: absolute;
+    position: fixed;
     inset: 0;
-    background: rgba(2, 6, 23, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(2, 6, 23, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 0;
 }
 
 .skill-modal-content {
     position: relative;
     width: 100%;
-    max-width: 750px;
-    background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    max-height: calc(100vh - 48px);
+    background: #0a0a0f;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), 0 0 50px rgba(var(--color-accent), 0.1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 60px rgba(var(--color-accent), 0.15);
+    z-index: 1;
+}
+
+/* Scrollbar - match site's Floating Blade design */
+.skill-modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.skill-modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.skill-modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    border-radius: 20px;
+}
+
+.skill-modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, var(--secondary), var(--primary));
 }
 
 .skill-modal-close {
@@ -393,7 +432,7 @@
 }
 
 .skill-modal-body {
-    padding: 30px 48px;
+    padding: 36px 44px 40px;
 }
 
 .skill-modal-header {
@@ -548,17 +587,134 @@
     color: #94a3b8;
 }
 
-@media (max-width: 768px) {
-    .skill-modal-body {
-        padding: 30px;
+/* PC: slightly larger modal */
+@media (min-width: 769px) {
+    .skill-modal-overlay {
+        padding: 40px;
     }
 
-    .skill-modal-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .skill-modal-content {
+        max-width: 880px;
+        max-height: calc(100vh - 80px);
+    }
+
+    .skill-modal-body {
+        padding: 40px 56px 48px;
     }
 
     .skill-modal-title {
-        font-size: 32px;
+        font-size: 38px;
+    }
+
+    .skill-modal-grid {
+        gap: 48px;
+    }
+
+    .skill-modal-features-list {
+        gap: 20px;
+    }
+
+    .skill-modal-feature-text {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skill-modal-overlay {
+        padding: 12px;
+    }
+
+    .skill-modal-content {
+        max-width: 100%;
+        border-radius: 16px;
+    }
+
+    .skill-modal-body {
+        padding: 14px 18px 18px;
+    }
+
+    .skill-modal-header {
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+
+    .skill-modal-icon-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .skill-modal-icon-box svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .skill-modal-label {
+        font-size: 7px;
+    }
+
+    .skill-modal-title {
+        font-size: 18px;
+    }
+
+    .skill-modal-description {
+        font-size: 11px;
+        margin-bottom: 10px;
+        line-height: 1.45;
+    }
+
+    .skill-modal-divider {
+        margin-bottom: 10px;
+    }
+
+    .skill-modal-grid {
+        gap: 14px;
+    }
+
+    .skill-modal-subheading {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .skill-modal-features-list {
+        gap: 10px;
+    }
+
+    .skill-modal-feature-item {
+        gap: 10px;
+    }
+
+    .skill-modal-feature-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .skill-modal-feature-title {
+        font-size: 11px;
+    }
+
+    .skill-modal-feature-text {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+    .skill-modal-stat-card {
+        padding: 12px;
+    }
+
+    .skill-modal-progress-ring {
+        width: 70px;
+        margin: 0 auto 8px;
+    }
+
+    .skill-modal-status {
+        font-size: 8px;
+    }
+
+    .skill-modal-close {
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
     }
 }

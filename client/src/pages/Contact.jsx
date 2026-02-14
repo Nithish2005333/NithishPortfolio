@@ -189,7 +189,7 @@ const Contact = () => {
             </div>
 
             {/* Main Content Container */}
-            <div style={{
+            <div className="contact-page" style={{
                 position: 'relative',
                 zIndex: 1,
                 maxWidth: '1200px',
@@ -202,6 +202,7 @@ const Contact = () => {
 
                 {/* Header Section */}
                 <motion.div
+                    className="contact-header"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     style={{ textAlign: 'center', marginBottom: '60px' }}
@@ -244,9 +245,9 @@ const Contact = () => {
                 </motion.div>
 
                 {/* Grid Section */}
-                <div style={{
+                <div className="contact-grid" style={{
                     display: 'grid',
-                    gridTemplateColumns: window.innerWidth > 992 ? 'repeat(2, 1fr)' : '1fr',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
                     gap: '40px',
                     width: '100%',
                     alignItems: 'start'
@@ -254,9 +255,9 @@ const Contact = () => {
 
                     {/* Left Column: Info & Socials */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                        <div style={{
+                        <div className="contact-methods-grid" style={{
                             display: 'grid',
-                            gridTemplateColumns: window.innerWidth > 640 ? 'repeat(2, 1fr)' : '1fr',
+                            gridTemplateColumns: 'repeat(2, 1fr)',
                             gap: '16px'
                         }}>
                             {contactMethods.map((method, idx) => (
@@ -265,6 +266,7 @@ const Contact = () => {
                                     href={method.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className={`contact-method-card ${idx === 0 ? 'contact-email-span' : ''}`}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
@@ -279,7 +281,7 @@ const Contact = () => {
                                         display: 'flex',
                                         alignItems: 'flex-start',
                                         gap: '20px',
-                                        gridColumn: idx === 0 && window.innerWidth > 640 ? 'span 2' : 'span 1'
+                                        gridColumn: idx === 0 ? 'span 2' : 'span 1'
                                     }}
                                     onMouseEnter={(e) => {
                                         e.currentTarget.style.background = 'rgba(13, 148, 136, 0.05)';
@@ -316,6 +318,7 @@ const Contact = () => {
 
                         {/* Space Filler: Availability & Response Card */}
                         <motion.div
+                            className="contact-availability"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
@@ -383,6 +386,7 @@ const Contact = () => {
 
                         {/* Social Links - Container removed, centered icons remaining */}
                         <motion.div
+                            className="contact-social-icons"
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
@@ -432,6 +436,7 @@ const Contact = () => {
 
                     {/* Right Column: Form */}
                     <motion.div
+                        className="contact-form-card"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         style={{
@@ -447,8 +452,8 @@ const Contact = () => {
                     >
                         {/* Subtle inner card decor removed for maximum clarity */}
 
-                        <form ref={formRef} onSubmit={handleSubmit} style={{ position: 'relative', zIndex: 1, display: 'grid', gap: '24px' }}>
-                            <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 640 ? '1fr 1fr' : '1fr', gap: '20px' }}>
+                        <form ref={formRef} onSubmit={handleSubmit} className="contact-form" style={{ position: 'relative', zIndex: 1, display: 'grid', gap: '24px' }}>
+                            <div className="contact-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                                 <div className="input-field">
                                     <label style={{ fontSize: '11px', fontWeight: 700, color: '#cbd5e1', letterSpacing: '0.1em', marginBottom: '8px', display: 'block' }}>YOUR NAME</label>
                                     <input

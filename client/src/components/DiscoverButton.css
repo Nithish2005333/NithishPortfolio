@@ -105,6 +105,7 @@
         opacity: 1;
     }
 }
+
 @keyframes colorize {
     0% {
         background: var(--color-background);
@@ -133,5 +134,42 @@
     100% {
         outline: 0.4em solid transparent;
         outline-offset: 0.4em;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DISCOVER BUTTON STYLES
+   ============================================ */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    .discover-btn {
+        --main-size: 1.4rem;
+        padding: 0.3em 0 0.3em 0.6em;
+    }
+
+    .discover-btn svg {
+        height: 0.75em;
+    }
+}
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
+    .discover-btn {
+        --main-size: 1.2rem;
+        padding: 0.28em 0 0.28em 0.55em;
+    }
+
+    .discover-btn span {
+        margin-right: 0.25em;
+    }
+
+    .discover-btn svg {
+        height: 0.7em;
+        margin-right: -0.14em;
+    }
+
+    .discover-btn:hover svg {
+        margin-right: 0.55em;
     }
 }

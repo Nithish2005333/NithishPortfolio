@@ -19,7 +19,7 @@
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     padding: 5px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .download-label:hover {
@@ -49,23 +49,30 @@
 }
 
 .download-label .download-title {
-    font-size: 15px;
+    font-size: 13px;
     color: #fff;
     transition: all 0.4s ease;
     position: absolute;
-    right: 28px;
-    bottom: 16px;
-    text-align: center;
+    left: 52px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
     font-weight: 600;
     margin: 0;
     letter-spacing: 0.5px;
     width: auto;
     pointer-events: none;
+    line-height: 1.25;
+}
+
+.download-label .download-title .download-line {
+    display: block;
 }
 
 .download-label .download-title:last-child {
     opacity: 0;
     visibility: hidden;
+    left: 52px;
 }
 
 .download-label .download-circle {
@@ -119,7 +126,7 @@
 
 .download-label:has(.download-input:checked) {
     width: 50px;
-    animation: installed 0.4s ease 3.5s forwards;
+    animation: installed 0.4s ease 1.2s forwards;
 }
 
 .download-label:has(.download-input:checked)::before {
@@ -153,7 +160,7 @@
 }
 
 .download-label .download-input:checked~.download-title:last-child {
-    animation: showInstalledMessage 0.4s ease 3.5s forwards;
+    animation: showInstalledMessage 0.4s ease 1.2s forwards;
 }
 
 @keyframes pulse {
@@ -217,9 +224,123 @@
 }
 
 @keyframes showInstalledMessage {
+    0% {
+        left: 52px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
     100% {
+        left: 52px;
         opacity: 1;
         visibility: visible;
-        right: 50px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DOWNLOAD BUTTON STYLES
+   ============================================ */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    .download-label {
+        width: 160px;
+        min-width: 160px;
+        padding: 4px;
+        overflow: visible;
+    }
+
+    .download-label .download-title {
+        font-size: 13px;
+        left: 48px;
+        white-space: nowrap;
+    }
+
+    .download-label .download-title:last-child {
+        left: 48px;
+    }
+
+    .download-label .download-circle {
+        height: 36px;
+        width: 36px;
+    }
+
+    .download-label .download-circle .download-icon {
+        width: 20px;
+    }
+
+    .download-label .download-circle .download-square {
+        width: 13px;
+    }
+
+    .download-label:has(.download-input:checked) {
+        width: 46px;
+    }
+
+    @keyframes installed {
+        100% {
+            width: 140px;
+            border-color: #22c55e;
+        }
+    }
+
+    @keyframes showInstalledMessage {
+        100% {
+            left: 48px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
+    .download-label {
+        width: 150px;
+        min-width: 150px;
+        padding: 3px;
+        overflow: visible;
+    }
+
+    .download-label .download-title {
+        font-size: 12px;
+        left: 46px;
+        white-space: nowrap;
+    }
+
+    .download-label .download-title:last-child {
+        left: 46px;
+    }
+
+    .download-label .download-circle {
+        height: 34px;
+        width: 34px;
+    }
+
+    .download-label .download-circle .download-icon {
+        width: 18px;
+    }
+
+    .download-label .download-circle .download-square {
+        width: 12px;
+    }
+
+    .download-label:has(.download-input:checked) {
+        width: 44px;
+    }
+
+    @keyframes installed {
+        100% {
+            width: 130px;
+            border-color: #22c55e;
+        }
+    }
+
+    @keyframes showInstalledMessage {
+        100% {
+            left: 46px;
+            opacity: 1;
+            visibility: visible;
+        }
     }
 }

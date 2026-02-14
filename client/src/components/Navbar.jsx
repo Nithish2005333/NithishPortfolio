@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, User, Briefcase, Mail, Menu, X, Terminal } from 'lucide-react';
+import { Home, User, Briefcase, Mail, Menu, X, Terminal, ArrowLeft } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 768);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -25,13 +34,24 @@ const Navbar = () => {
     return (
         <header className={`modern-header ${scrolled ? 'scrolled' : ''}`}>
             <div className="header-inner">
-                {/* Logo Segment */}
-                <Link to="/" className="header-segment logo-segment">
-                    <div className="logo-icon">
-                        <Terminal size={18} />
-                    </div>
-                    <span className="logo-text">NITHISH<span className="logo-accent">.DEV</span></span>
-                </Link>
+                {/* Logo or Back Button - on mobile, back button replaces logo when not on home */}
+                {isMobile && location.pathname !== '/' ? (
+                    <button
+                        className="header-segment navbar-back-btn"
+                        onClick={() => navigate(-1)}
+                        aria-label="Go back"
+                    >
+                        <ArrowLeft size={20} />
+                        <span className="navbar-back-text">Back</span>
+                    </button>
+                ) : (
+                    <Link to="/" className="header-segment logo-segment">
+                        <div className="logo-icon logo-icon-desktop">
+                            <Terminal size={18} />
+                        </div>
+                        <span className="logo-text">NITHISH<span className="logo-accent">.DEV</span></span>
+                    </Link>
+                )}
 
                 {/* Right Side Segments */}
                 <div className="header-right">
@@ -84,16 +104,19 @@ const Navbar = () => {
                         exit={{ opacity: 0, y: -20 }}
                     >
                         <div className="mobile-nav-content">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    to={link.path}
-                                    className="mobile-nav-link"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
+                            {navLinks.map((link) => {
+                                const isActive = location.pathname === link.path;
+                                return (
+                                    <Link
+                                        key={link.name}
+                                        to={link.path}
+                                        className={`mobile-nav-link ${isActive ? 'mobile-nav-active' : ''}`}
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </motion.div>
                 )}

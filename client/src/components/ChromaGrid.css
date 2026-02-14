@@ -17,19 +17,160 @@
     --r: 250px;
 }
 
-@media (max-width: 1124px) {
+/* ============================================
+   RESPONSIVE CHROMAGRID STYLES
+   ============================================ */
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
     .chroma-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 320px));
-        gap: 0.5rem;
-        padding: 0.5rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.75rem;
+    }
+
+    .chroma-card {
+        min-height: 380px;
+        border-radius: 16px;
+    }
+
+    .chroma-img-wrapper {
+        height: 180px;
+        padding: 12px;
+    }
+
+    .chroma-img-wrapper img {
+        border-radius: 10px;
+    }
+
+    .chroma-info {
+        padding: 16px;
+        gap: 8px;
+    }
+
+    .chroma-info .name {
+        font-size: 1rem;
+    }
+
+    .chroma-info .role {
+        font-size: 0.7rem;
+    }
+
+    .chroma-card-desc {
+        font-size: 0.7rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .chroma-info-actions {
+        margin-top: 6px;
+        padding-top: 10px;
+    }
+
+    .chroma-view-link {
+        font-size: 0.7rem;
+    }
+
+    .chroma-github-link svg {
+        width: 18px;
+        height: 18px;
     }
 }
 
-@media (max-width: 480px) {
+/* Small Mobile (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
     .chroma-grid {
-        grid-template-columns: 320px;
-        gap: 0.75rem;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
         padding: 1rem;
+    }
+
+    .chroma-card {
+        min-height: 420px;
+        border-radius: 18px;
+    }
+
+    .chroma-img-wrapper {
+        height: 200px;
+        padding: 14px;
+    }
+
+    .chroma-img-wrapper img {
+        border-radius: 11px;
+    }
+
+    .chroma-info {
+        padding: 18px;
+        gap: 9px;
+    }
+
+    .chroma-info .name {
+        font-size: 1.1rem;
+    }
+
+    .chroma-info .role {
+        font-size: 0.75rem;
+    }
+
+    .chroma-card-desc {
+        font-size: 0.75rem;
+    }
+
+    .chroma-info-actions {
+        margin-top: 7px;
+        padding-top: 11px;
+    }
+
+    .chroma-view-link {
+        font-size: 0.72rem;
+    }
+
+    .chroma-github-link svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .chroma-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.25rem;
+        padding: 1.5rem;
+    }
+
+    .chroma-card {
+        min-height: 440px;
+        border-radius: 19px;
+    }
+
+    .chroma-img-wrapper {
+        height: 210px;
+        padding: 15px;
+    }
+
+    .chroma-info {
+        padding: 19px;
+    }
+
+    .chroma-info .name {
+        font-size: 1.15rem;
+    }
+
+    .chroma-info .role {
+        font-size: 0.78rem;
+    }
+
+    .chroma-card-desc {
+        font-size: 0.78rem;
+    }
+}
+
+/* Large Tablets (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .chroma-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.35rem;
+        padding: 1.75rem;
     }
 }
 
@@ -71,6 +212,28 @@
     transform: translateY(-8px);
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06);
     filter: grayscale(0);
+}
+
+/* Mobile: centered card shows color like hover on PC, others stay grayscale */
+@media (max-width: 768px) {
+    .chroma-card.chroma-card--centered {
+        filter: grayscale(0) !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
+        transform: translateY(-4px) !important;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .chroma-card.chroma-card--centered .chroma-img-wrapper {
+        background: rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .chroma-card.chroma-card--centered .chroma-img-wrapper img {
+        transform: scale(1.05) !important;
+    }
+
+    .chroma-grid:not(.chroma-grid--clean) .chroma-card.chroma-card--centered::before {
+        opacity: 1 !important;
+    }
 }
 
 .chroma-grid:not(.chroma-grid--clean) .chroma-card::before {

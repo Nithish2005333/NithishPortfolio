@@ -123,6 +123,7 @@ const ComingSoon = () => {
             </div>
 
             <motion.div
+                className="coming-soon-container"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"

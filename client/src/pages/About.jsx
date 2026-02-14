@@ -184,12 +184,13 @@ const About = () => {
             </section>
 
             {/* Main Content Sections */}
-            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+            <div className="about-content" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                 {/* Story Section - Modern Two-Column Layout */}
                 <section style={{ marginBottom: '100px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.8fr)', gap: '32px', marginBottom: '32px' }}>
+                    <div className="about-story-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.8fr)', gap: '32px', marginBottom: '32px' }}>
                         {/* Left Column - Deep Bio Card */}
                         <motion.div
+                            className="about-bio-card"
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -257,7 +258,7 @@ const About = () => {
                         </motion.div>
 
                         {/* Right Column - Quick Stats & Info */}
-                        <div style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gap: '16px' }}>
+                        <div className="about-stats-grid" style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gap: '16px' }}>
                             {[
                                 { label: 'Projects Completed', value: '15+', icon: <Globe size={24} />, color: '#6366f1' },
                                 { label: 'Core Technologies', value: '20+', icon: <Zap size={24} />, color: '#ec4899' },
@@ -266,6 +267,7 @@ const About = () => {
                             ].map((stat, idx) => (
                                 <motion.div
                                     key={idx}
+                                    className="about-stat-card"
                                     initial={{ opacity: 0, x: 30 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
@@ -309,6 +311,7 @@ const About = () => {
 
                     {/* Full-Width Quote/Highlight Section */}
                     <motion.div
+                        className="about-quote"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -335,7 +338,7 @@ const About = () => {
                 </section>
 
                 {/* Skills & Tech Section */}
-                <section style={{ marginBottom: '100px' }}>
+                <section className="about-skills" style={{ marginBottom: '100px' }}>
                     <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', textAlign: 'center', marginBottom: '20px', fontWeight: 800 }}>
                         Core <span className="gradient-text">Skills</span>
                     </h2>
@@ -345,7 +348,7 @@ const About = () => {
 
                     <SkillCarousel skills={skills} />
 
-                    <div style={{ textAlign: 'center', marginBottom: '50px', marginTop: '120px' }}>
+                    <div className="about-tech" style={{ textAlign: 'center', marginBottom: '50px', marginTop: '120px' }}>
                         <h3 style={{ fontSize: 'clamp(28px, 4vw, 42px)', marginBottom: '16px', fontWeight: 800 }}>
                             Technologies <span className="gradient-text">I Use</span>
                         </h3>
@@ -421,6 +424,7 @@ const About = () => {
                         My <span className="gradient-text">Timeline</span>
                     </h2>
                     <div
+                        className="about-timeline"
                         style={{
                             maxWidth: '900px',
                             margin: '0 auto',

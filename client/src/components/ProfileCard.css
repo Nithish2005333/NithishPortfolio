@@ -574,7 +574,146 @@
     }
 }
 
-@media (max-width: 768px) {
+/* ============================================
+   RESPONSIVE PROFILE CARD STYLES
+   ============================================ */
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
+    .pc-card {
+        height: 65svh;
+        max-height: 380px;
+        aspect-ratio: 0.75;
+    }
+
+    .pc-behind {
+        inset: -40px;
+    }
+
+    .pc-card-wrapper:hover .pc-behind {
+        inset: -45px;
+    }
+
+    .pc-details {
+        top: 1.5em;
+    }
+
+    .pc-details h3 {
+        font-size: min(3.5svh, 2em) !important;
+    }
+
+    .pc-details p {
+        font-size: 12px !important;
+        top: -8px;
+    }
+
+    .pc-user-info {
+        bottom: 15px;
+        left: 12px;
+        right: 12px;
+        padding: 8px 12px;
+        border-radius: 18px;
+    }
+
+    .pc-avatar-wrapper {
+        width: 38px;
+        height: 38px;
+    }
+
+    .pc-mini-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .pc-user-details {
+        gap: 8px;
+    }
+
+    .pc-handle {
+        font-size: 9px !important;
+        letter-spacing: 0.15em;
+    }
+
+    .pc-status {
+        font-size: 16px !important;
+    }
+
+    .pc-tech-corner {
+        width: 6px;
+        height: 6px;
+    }
+
+    .pc-user-info:hover .pc-tech-corner {
+        width: 9px;
+        height: 9px;
+    }
+
+    .pc-status-ring {
+        border-width: 1px;
+    }
+}
+
+/* Small Mobile (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .pc-card {
+        height: 68svh;
+        max-height: 420px;
+    }
+
+    .pc-behind {
+        inset: -50px;
+    }
+
+    .pc-card-wrapper:hover .pc-behind {
+        inset: -55px;
+    }
+
+    .pc-details {
+        top: 1.8em;
+    }
+
+    .pc-details h3 {
+        font-size: min(4svh, 2.3em) !important;
+    }
+
+    .pc-details p {
+        font-size: 13px !important;
+        top: -10px;
+    }
+
+    .pc-user-info {
+        bottom: 18px;
+        left: 15px;
+        right: 15px;
+        padding: 9px 14px;
+        border-radius: 20px;
+    }
+
+    .pc-avatar-wrapper {
+        width: 42px;
+        height: 42px;
+    }
+
+    .pc-mini-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .pc-user-details {
+        gap: 9px;
+    }
+
+    .pc-handle {
+        font-size: 10px !important;
+    }
+
+    .pc-status {
+        font-size: 18px !important;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
     .pc-card {
         height: 70svh;
         max-height: 450px;
@@ -585,37 +724,64 @@
     }
 
     .pc-details h3 {
-        font-size: min(4svh, 2.5em);
+        font-size: min(4svh, 2.5em) !important;
     }
 
     .pc-details p {
-        font-size: 14px;
+        font-size: 14px !important;
     }
 
     .pc-user-info {
-        --ui-inset: 15px;
-        padding: 10px 12px;
+        bottom: 20px;
+        left: 18px;
+        right: 18px;
+        padding: 10px 16px;
+    }
+
+    .pc-avatar-wrapper {
+        width: 46px;
+        height: 46px;
     }
 
     .pc-mini-avatar {
-        width: 28px;
-        height: 28px;
+        width: 42px;
+        height: 42px;
     }
 
     .pc-user-details {
-        gap: 10px;
+        gap: 12px;
     }
 
     .pc-handle {
-        font-size: 13px;
+        font-size: 10px !important;
     }
 
     .pc-status {
-        font-size: 10px;
+        font-size: 20px !important;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .pc-card {
+        height: 85svh;
+        max-height: 350px;
     }
 
-    .pc-contact-btn {
-        padding: 6px 12px;
-        font-size: 11px;
+    .pc-details {
+        top: 1em;
+    }
+
+    .pc-details h3 {
+        font-size: min(3svh, 1.8em) !important;
+    }
+
+    .pc-details p {
+        font-size: 11px !important;
+    }
+
+    .pc-user-info {
+        padding: 6px 10px;
+        bottom: 10px;
     }
 }

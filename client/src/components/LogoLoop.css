@@ -254,3 +254,126 @@
 .logoloop--scrollable:active {
     cursor: grabbing;
 }
+
+/* ============================================
+   RESPONSIVE LOGOLOOP STYLES
+   ============================================ */
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+    .logoloop {
+        --logoloop-gap: 20px;
+        --logoloop-logoHeight: 24px;
+    }
+
+    .logoloop__item-inner {
+        padding: 6px 12px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+
+    .logoloop--tech-showcase .logoloop__item-inner {
+        padding: 10px 16px;
+        gap: 10px;
+    }
+
+    .logoloop__title {
+        font-size: 14px;
+    }
+
+    .logoloop--tech-showcase .logoloop__title {
+        font-size: 13px;
+    }
+
+    .logoloop__node {
+        font-size: 1em;
+    }
+
+    .logoloop--tech-showcase .logoloop__node {
+        font-size: 1.3em;
+    }
+
+    .logoloop--fade::before,
+    .logoloop--fade::after {
+        width: clamp(20px, 10%, 80px);
+    }
+}
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
+    .logoloop {
+        --logoloop-gap: 16px;
+        --logoloop-logoHeight: 20px;
+    }
+
+    .logoloop__item-inner {
+        padding: 5px 10px;
+        gap: 6px;
+        border-radius: 8px;
+    }
+
+    .logoloop--tech-showcase .logoloop__item-inner {
+        padding: 8px 14px;
+        gap: 8px;
+    }
+
+    .logoloop__title {
+        font-size: 12px;
+    }
+
+    .logoloop--tech-showcase .logoloop__title {
+        font-size: 11px;
+    }
+
+    .logoloop__node {
+        font-size: 0.9em;
+    }
+
+    .logoloop--tech-showcase .logoloop__node {
+        font-size: 1.2em;
+    }
+
+    .logoloop--fade::before,
+    .logoloop--fade::after {
+        width: clamp(16px, 12%, 60px);
+    }
+
+    .logoloop--scale-hover .logoloop__item:hover img,
+    .logoloop--scale-hover .logoloop__item:hover .logoloop__node {
+        transform: scale(1.1);
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .logoloop {
+        --logoloop-gap: 24px;
+        --logoloop-logoHeight: 26px;
+    }
+
+    .logoloop__item-inner {
+        padding: 7px 14px;
+        gap: 10px;
+    }
+
+    .logoloop--tech-showcase .logoloop__item-inner {
+        padding: 11px 18px;
+        gap: 11px;
+    }
+
+    .logoloop__title {
+        font-size: 15px;
+    }
+
+    .logoloop--tech-showcase .logoloop__title {
+        font-size: 14px;
+    }
+
+    .logoloop__node {
+        font-size: 1.1em;
+    }
+
+    .logoloop--tech-showcase .logoloop__node {
+        font-size: 1.4em;
+    }
+}

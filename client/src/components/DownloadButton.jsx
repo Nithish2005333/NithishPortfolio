@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './DownloadButton.css';
 
-const DownloadButton = ({ resumeUrl = '/Resume.pdf', fileName = 'Nithishwaran_Resume.pdf' }) => {
+const RESUME_DOWNLOAD_URL = 'https://drive.google.com/uc?export=download&id=1keets2j-zcGLNxBx3LN5Njnmagz1zHiJ';
+
+const DownloadButton = ({ resumeUrl = RESUME_DOWNLOAD_URL, fileName = 'Nithishwaran_Resume.pdf' }) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleDownload = () => {
@@ -9,15 +11,16 @@ const DownloadButton = ({ resumeUrl = '/Resume.pdf', fileName = 'Nithishwaran_Re
 
         setIsChecked(true);
 
-        // Simulate download delay to match animation
-        setTimeout(() => {
-            const link = document.createElement('a');
-            link.href = resumeUrl;
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }, 3500);
+        // Trigger direct download - Google Drive export URL prompts file download
+        const link = document.createElement('a');
+        link.href = resumeUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('download', fileName);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
     };
 
     return (
@@ -47,8 +50,8 @@ const DownloadButton = ({ resumeUrl = '/Resume.pdf', fileName = 'Nithishwaran_Re
                     </svg>
                     <div className="download-square"></div>
                 </span>
-                <p className="download-title">Resume</p>
-                <p className="download-title">Success</p>
+                <p className="download-title"><span className="download-line">Download</span><span className="download-line">Resume</span></p>
+                <p className="download-title">Downloaded!</p>
             </label>
         </div>
     );

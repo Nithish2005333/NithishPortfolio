@@ -1,4 +1,5 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useDrag } from '@use-gesture/react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -57,7 +58,12 @@ const SkillCarousel = ({ skills }) => {
     useEffect(() => {
         if (selectedSkill) {
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
-            return;
+            document.body.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none';
+            return () => {
+                document.body.style.overflow = '';
+                document.body.style.touchAction = '';
+            };
         }
 
         const handleWheel = (e) => {
@@ -184,89 +190,92 @@ const SkillCarousel = ({ skills }) => {
                 </button>
             )}
 
-            {/* Modal Detail View */}
-            <AnimatePresence>
-                {selectedSkill && (
-                    <div className="skill-modal-overlay">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="skill-modal-backdrop"
+            {/* Modal Detail View - Rendered via Portal to body for proper backdrop blur */}
+            {createPortal(
+                <AnimatePresence>
+                    {selectedSkill && (
+                        <div className="skill-modal-overlay">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                            className="skill-modal-backdrop cursor-target"
                             onClick={() => setSelectedSkill(null)}
-                        />
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                            animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            className="skill-modal-content"
-                            style={{
-                                '--color-accent': hexToRgb(selectedSkill.color)
-                            }}
-                        >
-                            <button className="skill-modal-close" onClick={() => setSelectedSkill(null)}>
-                                <X size={24} />
-                            </button>
+                            />
+                            <motion.div
+                                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                                animate={{ scale: 1, opacity: 1, y: 0 }}
+                                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                                className="skill-modal-content"
+                                style={{
+                                    '--color-accent': hexToRgb(selectedSkill.color)
+                                }}
+                            >
+                                <button className="skill-modal-close cursor-target" onClick={() => setSelectedSkill(null)}>
+                                    <X size={24} />
+                                </button>
 
-                            <div className="skill-modal-body">
-                                <div className="skill-modal-header">
-                                    <div className="skill-modal-icon-box">
-                                        {selectedSkill.icon}
+                                <div className="skill-modal-body">
+                                    <div className="skill-modal-header">
+                                        <div className="skill-modal-icon-box">
+                                            {selectedSkill.icon}
+                                        </div>
+                                        <div>
+                                            <span className="skill-modal-label">CORE SPECIALIZATION</span>
+                                            <h2 className="skill-modal-title">{selectedSkill.name}</h2>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span className="skill-modal-label">CORE SPECIALIZATION</span>
-                                        <h2 className="skill-modal-title">{selectedSkill.name}</h2>
-                                    </div>
-                                </div>
 
-                                <p className="skill-modal-description">{selectedSkill.description}</p>
+                                    <p className="skill-modal-description">{selectedSkill.description}</p>
 
-                                <div className="skill-modal-divider" />
+                                    <div className="skill-modal-divider" />
 
-                                <div className="skill-modal-grid">
-                                    <div className="skill-modal-features">
-                                        <h3 className="skill-modal-subheading">Key Expertise</h3>
-                                        <div className="skill-modal-features-list">
-                                            {selectedSkill.features?.map((feat, i) => (
-                                                <div key={i} className="skill-modal-feature-item">
-                                                    <div className="skill-modal-feature-icon">{feat.icon}</div>
-                                                    <div>
-                                                        <h4 className="skill-modal-feature-title">{feat.title}</h4>
-                                                        <p className="skill-modal-feature-text">{feat.text}</p>
+                                    <div className="skill-modal-grid">
+                                        <div className="skill-modal-features">
+                                            <h3 className="skill-modal-subheading">Key Expertise</h3>
+                                            <div className="skill-modal-features-list">
+                                                {selectedSkill.features?.map((feat, i) => (
+                                                    <div key={i} className="skill-modal-feature-item">
+                                                        <div className="skill-modal-feature-icon">{feat.icon}</div>
+                                                        <div>
+                                                            <h4 className="skill-modal-feature-title">{feat.title}</h4>
+                                                            <p className="skill-modal-feature-text">{feat.text}</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="skill-modal-stats">
-                                        <div className="skill-modal-stat-card">
-                                            <h3 className="skill-modal-subheading">Mastery Level</h3>
-                                            <div className="skill-modal-progress-ring">
-                                                <svg viewBox="0 0 36 36" className="circular-chart">
-                                                    <path className="circle-bg"
-                                                        d="M18 2.0845
-                                                            a 15.9155 15.9155 0 0 1 0 31.831
-                                                            a 15.9155 15.9155 0 0 1 0 -31.831"
-                                                    />
-                                                    <path className="circle"
-                                                        strokeDasharray={`${selectedSkill.level}, 100`}
-                                                        d="M18 2.0845
-                                                            a 15.9155 15.9155 0 0 1 0 31.831
-                                                            a 15.9155 15.9155 0 0 1 0 -31.831"
-                                                    />
-                                                    <text x="18" y="20.35" className="percentage">{selectedSkill.level}%</text>
-                                                </svg>
+                                                ))}
                                             </div>
-                                            <p className="skill-modal-status">ADVANCED PROFICIENCY</p>
+                                        </div>
+
+                                        <div className="skill-modal-stats">
+                                            <div className="skill-modal-stat-card">
+                                                <h3 className="skill-modal-subheading">Mastery Level</h3>
+                                                <div className="skill-modal-progress-ring">
+                                                    <svg viewBox="0 0 36 36" className="circular-chart">
+                                                        <path className="circle-bg"
+                                                            d="M18 2.0845
+                                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                        />
+                                                        <path className="circle"
+                                                            strokeDasharray={`${selectedSkill.level}, 100`}
+                                                            d="M18 2.0845
+                                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                        />
+                                                        <text x="18" y="20.35" className="percentage">{selectedSkill.level}%</text>
+                                                    </svg>
+                                                </div>
+                                                <p className="skill-modal-status">ADVANCED PROFICIENCY</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
+                            </motion.div>
+                        </div>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
 
 
         </div>

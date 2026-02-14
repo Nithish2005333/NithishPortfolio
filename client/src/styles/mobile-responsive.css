@@ -1,0 +1,1158 @@
+/**
+ * Mobile-Only Responsive Styles
+ * Applies ONLY to screens ≤768px - PC/Desktop remains unchanged
+ */
+
+@media (max-width: 768px) {
+
+  /* ========== GLOBAL MOBILE ========== */
+  /* Restore default cursor - hide custom arrow cursor on mobile, use system cursor */
+  * {
+    cursor: auto !important;
+  }
+
+  a,
+  button,
+  [role="button"],
+  .mobile-toggle-btn,
+  .back-button-wrapper .button,
+  label[for],
+  .discover-btn,
+  .learn-more-btn,
+  .download-label {
+    cursor: pointer !important;
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+
+  /* Social icons keep brand colors (set in component) */
+
+  /* ========== NAVBAR MOBILE - Full Redesign ========== */
+  .modern-header {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 0 16px !important;
+    pointer-events: auto !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(5, 5, 12, 0.95) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.15) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .modern-header.scrolled {
+    top: 0 !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .header-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    pointer-events: auto !important;
+  }
+
+  .header-right {
+    pointer-events: auto !important;
+  }
+
+  .header-segment {
+    pointer-events: auto !important;
+  }
+
+  .logo-segment {
+    pointer-events: auto !important;
+  }
+
+  .modern-header.scrolled {
+    top: 8px !important;
+  }
+
+  .header-segment {
+    height: 44px !important;
+  }
+
+  .logo-segment {
+    padding: 0 12px 0 8px !important;
+    gap: 10px !important;
+    border-radius: 14px !important;
+  }
+
+  .logo-icon {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 10px !important;
+  }
+
+  .logo-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .logo-text {
+    font-size: 12px !important;
+    display: inline !important;
+  }
+
+  /* Hide terminal icon on mobile home - user prefers text only; back button replaces it on other pages */
+  .logo-icon-desktop {
+    display: none !important;
+  }
+
+  .nav-segment {
+    display: none !important;
+  }
+
+  .mobile-toggle-btn {
+    display: flex !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+  }
+
+  .mobile-toggle-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .cta-segment {
+    padding: 0 10px !important;
+    gap: 8px !important;
+    border-radius: 14px !important;
+  }
+
+  .status-indicator {
+    padding: 4px 8px !important;
+    border-radius: 8px !important;
+  }
+
+  .status-text {
+    font-size: 9px !important;
+  }
+
+  /* Mobile Nav - Compact right-side bar, needed text size only */
+  .mobile-nav-overlay {
+    top: 60px !important;
+    left: auto !important;
+    right: 16px !important;
+    width: auto !important;
+    min-width: 140px !important;
+    max-width: 180px !important;
+    padding: 8px 6px !important;
+    z-index: 1998 !important;
+    pointer-events: auto !important;
+    background: rgba(10, 10, 18, 0.96) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+    animation: mobileNavSlideIn 0.3s ease-out !important;
+  }
+
+  @keyframes mobileNavSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .mobile-nav-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    width: 100% !important;
+  }
+
+  .mobile-nav-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    pointer-events: auto !important;
+    position: relative !important;
+  }
+
+  .mobile-nav-link::before {
+    content: '' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 0 !important;
+    height: 20px !important;
+    background: linear-gradient(180deg, #6366f1, #8b5cf6) !important;
+    border-radius: 3px 0 0 3px !important;
+    transition: width 0.2s ease !important;
+  }
+
+  .mobile-nav-link.mobile-nav-active {
+    color: #fff !important;
+    background: rgba(99, 102, 241, 0.1) !important;
+  }
+
+  .mobile-nav-link.mobile-nav-active::before {
+    width: 3px !important;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:active {
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .mobile-nav-link.mobile-nav-active:hover,
+  .mobile-nav-link.mobile-nav-active:active {
+    background: rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .mobile-toggle-btn {
+    pointer-events: auto !important;
+  }
+
+  /* ========== BACK BUTTON MOBILE ========== */
+  /* Hide standalone back button - navbar shows it on mobile when not on home */
+  .back-button-wrapper {
+    display: none !important;
+  }
+
+  .back-button-wrapper .button {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .back-button-wrapper .button-elem {
+    width: 42px !important;
+  }
+
+  .back-button-wrapper .button-elem svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .back-button-wrapper .button:hover .button-box,
+  .back-button-wrapper .button:focus .button-box {
+    transform: translateX(-42px) !important;
+  }
+
+  /* ========== HERO SECTION (HOME) ========== */
+  .hero-section {
+    padding: 56px 16px 40px !important;
+    min-height: auto !important;
+  }
+
+  .hero-section [style*="gap: '100px'"],
+  .hero-section [style*="gap:100px"] {
+    gap: 8px !important;
+    padding: 0 12px !important;
+  }
+
+  /* Don't move profile card up - keep it in place */
+  .hero-section .pc-card-wrapper {
+    margin-bottom: -24px !important;
+    margin-top: 0 !important;
+  }
+
+  /* Move text block (Hi I am, Nithishwaran, etc.) upward on mobile only */
+  /* User requested "little upward" - shifting from -32px to -60px */
+  .hero-section .hero-content-block {
+    margin-top: -90px !important;
+  }
+
+  .hero-section h2 {
+    font-size: 28px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .proximity-title {
+    font-size: 38px !important;
+  }
+
+  .hero-section p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-section [style*="gap: '24px'"] {
+    gap: 14px !important;
+  }
+
+  .hero-section [style*="fontSize: '30px'"] {
+    font-size: 22px !important;
+  }
+
+  /* Profile card wrapper - improved size, do not pull upward */
+  .pc-card-wrapper {
+    transform: scale(0.88) !important;
+    margin-bottom: -24px !important;
+    margin-top: 0 !important;
+  }
+
+  .pc-card {
+    height: 65svh !important;
+    max-height: 380px !important;
+  }
+
+  /* ========== SECTION TITLES ========== */
+  .section-title {
+    font-size: 26px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .section-subtitle {
+    font-size: 14px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .section {
+    padding: 36px 16px !important;
+  }
+
+  /* ========== SERVICE CARDS (HOME - What I Do) ========== */
+  .grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .glass-card {
+    padding: 24px 20px !important;
+    border-radius: 18px !important;
+  }
+
+  .glass-card h3 {
+    font-size: 20px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .glass-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Electric border service cards - icon and number */
+  .glass-card [style*="width: '80px'"],
+  .glass-card [style*="width: 80px"] {
+    width: 56px !important;
+    height: 56px !important;
+    margin-bottom: 20px !important;
+    border-radius: 14px !important;
+  }
+
+  .glass-card [style*="fontSize: '120px'"] {
+    font-size: 70px !important;
+  }
+
+  /* ========== CHROMAGRID / PROJECT CARDS ========== */
+  .chroma-grid {
+    padding: 1rem 12px !important;
+    gap: 1rem !important;
+  }
+
+  .chroma-card {
+    min-height: 340px !important;
+    border-radius: 16px !important;
+  }
+
+  .chroma-img-wrapper {
+    height: 160px !important;
+    padding: 10px !important;
+  }
+
+  .chroma-info {
+    padding: 14px !important;
+    gap: 6px !important;
+  }
+
+  .chroma-info .name {
+    font-size: 1rem !important;
+  }
+
+  .chroma-info .role {
+    font-size: 0.68rem !important;
+  }
+
+  .chroma-card-desc {
+    font-size: 0.7rem !important;
+  }
+
+  .chroma-info-actions {
+    margin-top: 8px !important;
+    padding-top: 10px !important;
+  }
+
+  .chroma-view-link {
+    font-size: 0.68rem !important;
+  }
+
+  .chroma-github-link svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Project cards - touch shows hover effect like PC (color, lift) */
+  .chroma-card {
+    touch-action: manipulation;
+  }
+
+  .chroma-card:active,
+  .chroma-card:focus-visible {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-8px) !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+    filter: grayscale(0) !important;
+  }
+
+  .chroma-card:active .chroma-img-wrapper,
+  .chroma-card:focus-visible .chroma-img-wrapper {
+    background: rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .chroma-card:active .chroma-img-wrapper img,
+  .chroma-card:focus-visible .chroma-img-wrapper img {
+    transform: scale(1.05) !important;
+  }
+
+  .chroma-grid:not(.chroma-grid--clean) .chroma-card:active::before,
+  .chroma-grid:not(.chroma-grid--clean) .chroma-card:focus-visible::before {
+    opacity: 1 !important;
+  }
+
+  /* Touch devices: show colored card when touching (like PC hover) */
+  @media (hover: none) {
+    .chroma-card:active {
+      filter: grayscale(0) !important;
+    }
+  }
+
+  /* ========== TECH STACK SECTION ========== */
+  .section [style*="padding: '22px 32px'"] {
+    padding: 14px 16px !important;
+  }
+
+  .section [style*="padding: '60px 40px'"] {
+    padding: 36px 16px !important;
+  }
+
+  /* ========== CTA SECTION (Get in Touch) ========== */
+  .glass-card.glow {
+    padding: 40px 20px !important;
+    border-radius: 18px !important;
+  }
+
+  .glass-card.glow h2 {
+    font-size: 24px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .glass-card.glow p {
+    font-size: 14px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* ========== DOWNLOAD BUTTON - Fix text overlap on mobile ========== */
+  .download-container {
+    min-width: 165px !important;
+  }
+
+  .download-label {
+    overflow: visible !important;
+    padding: 5px 8px 5px 6px !important;
+    min-width: 165px !important;
+  }
+
+  .download-label .download-circle {
+    width: 38px !important;
+    height: 38px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .download-label .download-title,
+  .download-label .download-title:last-child {
+    left: 56px !important;
+  }
+
+  .download-label .download-circle .download-icon {
+    width: 20px !important;
+  }
+
+  @keyframes showInstalledMessage {
+    100% {
+      left: 56px;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  /* ========== NITHISHWARAN - VariableProximity (Mobile Alternative) ========== */
+  /* Instead of mouse tracking, we animate the font weight automatically */
+  .hero-section .proximity-title {
+    font-size: clamp(40px, 12vw, 80px) !important;
+    line-height: 1.1 !important;
+    animation: weightBreathing 3s ease-in-out infinite alternate, textShine 4s linear infinite !important;
+
+    /* Ensure gradient text remains visible */
+    background: linear-gradient(90deg,
+        #818cf8 0%,
+        #c084fc 25%,
+        #f472b6 50%,
+        #c084fc 75%,
+        #818cf8 100%) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+
+  /* Cycle from Bold to Extra Bold - IMPROVED THICKNESS on mobile */
+  @keyframes weightBreathing {
+    0% {
+      font-variation-settings: "wght" 750;
+      letter-spacing: -2px;
+    }
+
+    100% {
+      font-variation-settings: "wght" 950;
+      letter-spacing: 0px;
+    }
+  }
+
+  /* Keep the shine effect but slower/smoother */
+  @keyframes textShine {
+    0% {
+      background-position: 0% center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+
+  .discover-btn {
+    --main-size: 1.2rem !important;
+    padding: 0.3em 0.55em !important;
+  }
+
+  .learn-more-btn {
+    width: 12rem !important;
+  }
+
+  .learn-more-btn .circle {
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+  }
+
+  .learn-more-btn .button-text {
+    font-size: 0.75rem !important;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    padding: 24px 16px !important;
+  }
+
+  footer p {
+    font-size: 12px !important;
+  }
+
+  /* ========== ABOUT PAGE ========== */
+  .about-content {
+    padding: 0 16px !important;
+  }
+
+  .hero {
+    min-height: 28vh !important;
+    padding-top: 90px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .hero-title {
+    font-size: 32px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 14px !important;
+  }
+
+  /* Story section - stack columns */
+  [style*="gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.8fr)'"],
+  .about-story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Bio card */
+  .about-bio-card {
+    padding: 24px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .about-bio-card h2 {
+    font-size: 24px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .about-bio-card p {
+    font-size: 14px !important;
+  }
+
+  /* Stats grid */
+  .about-stats-grid {
+    grid-template-rows: auto !important;
+    gap: 12px !important;
+  }
+
+  .about-stat-card {
+    padding: 16px !important;
+    gap: 12px !important;
+    border-radius: 16px !important;
+  }
+
+  .about-stat-card [style*="width: '56px'"] {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 12px !important;
+  }
+
+  .about-stat-card [style*="fontSize: '28px'"] {
+    font-size: 20px !important;
+  }
+
+  .about-stat-card [style*="fontSize: '13px'"] {
+    font-size: 11px !important;
+  }
+
+  /* Quote section */
+  .about-quote {
+    padding: 20px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .about-quote p {
+    font-size: 14px !important;
+  }
+
+  /* Core Skills section */
+  .about-skills h2 {
+    font-size: 26px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .about-skills>p {
+    font-size: 14px !important;
+    margin-bottom: 32px !important;
+  }
+
+  /* Technologies section on About - ensure it stays below modal */
+  .about-tech {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  .about-tech h3 {
+    font-size: 22px !important;
+  }
+
+  /* Timeline */
+  .about-timeline {
+    padding-left: 20px !important;
+  }
+
+  .about-timeline .glass-card {
+    padding: 14px 16px !important;
+    margin-left: 20px !important;
+  }
+
+  .about-timeline .glass-card h3 {
+    font-size: 14px !important;
+  }
+
+  .about-timeline .glass-card p {
+    font-size: 12px !important;
+  }
+
+  /* ========== SKILL CAROUSEL ========== */
+  .skill-carousel-wrapper {
+    min-height: 320px !important;
+    height: 420px !important;
+    margin: 40px 0 60px !important;
+  }
+
+  .skill-carousel-inner {
+    --w: 180px !important;
+    --h: 280px !important;
+    --translateZ: 220px !important;
+  }
+
+  .skill-card-content {
+    padding: 12px 10px !important;
+  }
+
+  .skill-card-header {
+    grid-template-columns: 30px 1fr !important;
+    gap: 8px !important;
+  }
+
+  .skill-icon-box {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .skill-icon-inner svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .skill-title {
+    font-size: 11px !important;
+  }
+
+  .skill-description,
+  .skill-description-fallback {
+    font-size: 8px !important;
+  }
+
+  .skill-feature-title {
+    font-size: 9px !important;
+  }
+
+  .skill-feature-desc {
+    font-size: 7px !important;
+  }
+
+  .skill-feature-icon-box {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .skill-feature-icon-box svg {
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  /* Prevent carousel card content collapse - scroll features, keep level visible */
+  .skill-card-content {
+    overflow: visible !important;
+  }
+
+  .skill-feature-timeline {
+    flex: 1 1 auto !important;
+    min-height: 60px !important;
+    overflow-y: auto !important;
+    max-height: 140px !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-bottom: 10px !important;
+  }
+
+  .skill-level-container {
+    flex-shrink: 0 !important;
+    margin-top: 8px !important;
+    padding-top: 8px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .carousel-nav-btn {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .carousel-nav-left {
+    left: 5% !important;
+  }
+
+  .carousel-nav-right {
+    right: 5% !important;
+  }
+
+  /* ========== SKILL MODAL - Core Skills Details (mobile) ========== */
+  .skill-modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    padding: 12px !important;
+    align-items: flex-start !important;
+    padding-top: 72px !important;
+    padding-bottom: 24px !important;
+    z-index: 9999 !important;
+    overflow-y: auto !important;
+  }
+
+  .skill-modal-content {
+    max-width: 100% !important;
+    max-height: calc(100vh - 96px) !important;
+    overflow-y: auto !important;
+    border-radius: 20px !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-bottom: 24px !important;
+  }
+
+  .skill-modal-body {
+    padding: 20px 20px 32px !important;
+  }
+
+  .skill-modal-close {
+    top: 16px !important;
+    right: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 10 !important;
+  }
+
+  .skill-modal-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .skill-modal-icon-box {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+  }
+
+  .skill-modal-icon-box svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .skill-modal-title {
+    font-size: 24px !important;
+  }
+
+  .skill-modal-description {
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .skill-modal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Prevent Key Expertise from overlapping Mastery Level */
+  .skill-modal-features {
+    min-height: 0 !important;
+  }
+
+  .skill-modal-features-list {
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .skill-modal-stats {
+    flex-shrink: 0 !important;
+    margin-top: 4px !important;
+  }
+
+  .skill-modal-subheading {
+    font-size: 16px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .skill-modal-feature-item {
+    gap: 12px !important;
+  }
+
+  .skill-modal-feature-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .skill-modal-feature-title {
+    font-size: 14px !important;
+  }
+
+  .skill-modal-feature-text {
+    font-size: 13px !important;
+  }
+
+  .skill-modal-stat-card {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .skill-modal-progress-ring {
+    width: 90px !important;
+    margin: 0 auto 12px !important;
+  }
+
+  .skill-modal-status {
+    font-size: 11px !important;
+  }
+
+  /* ========== SERVICES PAGE ========== */
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .glass-card [style*="width: '70px'"] {
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 12px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .glass-card [style*="fontSize: '28px'"] {
+    font-size: 20px !important;
+  }
+
+  .glass-card [style*="padding: '40px'"] {
+    padding: 24px 20px !important;
+  }
+
+  /* Process section */
+  .grid-3 .glass-card {
+    padding: 24px 20px !important;
+  }
+
+  .grid-3 .glass-card [style*="fontSize: '48px'"] {
+    font-size: 36px !important;
+  }
+
+  .grid-3 .glass-card h3 {
+    font-size: 16px !important;
+  }
+
+  .grid-3 .glass-card p {
+    font-size: 13px !important;
+  }
+
+  /* Tech badges */
+  .glass-card [style*="padding: '16px 24px'"] {
+    padding: 12px 18px !important;
+  }
+
+  .glass-card [style*="fontSize: '16px'"] span {
+    font-size: 13px !important;
+  }
+
+  /* ========== PROJECTS PAGE ========== */
+  .projects-hero {
+    min-height: 35vh !important;
+    padding: 80px 16px 30px !important;
+  }
+
+  .projects-hero h1 {
+    font-size: 32px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .projects-hero p {
+    font-size: 14px !important;
+  }
+
+  /* ========== CONTACT PAGE ========== */
+  .contact-page {
+    padding: 100px 16px 50px !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .contact-header h1 {
+    font-size: 28px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .contact-header p {
+    font-size: 14px !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 0 !important;
+  }
+
+  .contact-methods-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .contact-email-span {
+    grid-column: span 1 !important;
+  }
+
+  .contact-method-card {
+    padding: 18px !important;
+    border-radius: 18px !important;
+  }
+
+  .contact-method-card [style*="width: '52px'"] {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+  }
+
+  .contact-method-card [style*="fontSize: '15px'"] {
+    font-size: 13px !important;
+  }
+
+  .contact-availability {
+    padding: 24px !important;
+    border-radius: 20px !important;
+  }
+
+  .contact-availability h3 {
+    font-size: 16px !important;
+  }
+
+  .contact-availability p {
+    font-size: 13px !important;
+  }
+
+  .contact-form-card {
+    padding: 24px 20px !important;
+    border-radius: 24px !important;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-form-card input,
+  .contact-form-card textarea {
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+  }
+
+  .contact-form-card label {
+    font-size: 10px !important;
+  }
+
+  .contact-social-icons a {
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 12px !important;
+  }
+
+  /* ========== COMING SOON PAGE ========== */
+  .coming-soon-container {
+    padding: 40px 20px !important;
+    max-width: 100% !important;
+    width: 95% !important;
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center !important;
+    border-radius: 24px !important;
+  }
+
+  .coming-soon-container>div {
+    align-items: center !important;
+  }
+
+  .coming-soon-container h1,
+  .coming-soon-title {
+    font-size: 28px !important;
+  }
+
+  .coming-soon-container p,
+  .coming-soon-subtitle {
+    font-size: 14px !important;
+  }
+
+  .coming-soon-container [style*="width: '90px'"] {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .coming-soon-container [style*="fontSize: '11px'"] {
+    font-size: 10px !important;
+  }
+}
+
+/* Extra small phones - tighter spacing */
+@media (max-width: 480px) {
+  .modern-header {
+    top: 8px !important;
+    padding: 0 10px !important;
+  }
+
+  .logo-text {
+    display: none !important;
+  }
+
+  .status-text {
+    display: none !important;
+  }
+
+  .header-segment {
+    height: 40px !important;
+  }
+
+  .section-title {
+    font-size: 22px !important;
+  }
+
+  .hero-section h2 {
+    font-size: 24px !important;
+  }
+
+  .proximity-title {
+    font-size: 32px !important;
+  }
+
+  .pc-card-wrapper {
+    transform: scale(0.82) !important;
+    margin-bottom: -35px !important;
+  }
+
+  .glass-card.glow h2 {
+    font-size: 20px !important;
+  }
+
+  .chroma-card {
+    min-height: 300px !important;
+  }
+
+  .chroma-img-wrapper {
+    height: 140px !important;
+  }
+
+  .skill-carousel-wrapper {
+    min-height: 280px !important;
+    height: 380px !important;
+  }
+
+  .skill-carousel-inner {
+    --w: 160px !important;
+    --h: 250px !important;
+    --translateZ: 200px !important;
+  }
+
+  .contact-header h1 {
+    font-size: 24px !important;
+  }
+}

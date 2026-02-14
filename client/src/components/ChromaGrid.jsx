@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
@@ -22,6 +22,8 @@ export const ChromaGrid = ({
     const setX = useRef(null);
     const setY = useRef(null);
     const pos = useRef({ x: 0, y: 0 });
+    const cardRefs = useRef([]);
+    const [centeredIndex, setCenteredIndex] = useState(null);
 
     const demo = [
         {
@@ -92,6 +94,54 @@ export const ChromaGrid = ({
         setY.current(pos.current.y);
     }, []);
 
+    /* Mobile: center card shows color (like hover on PC), others grayscale */
+    useEffect(() => {
+        const mql = window.matchMedia('(max-width: 768px)');
+        const isMobile = () => mql.matches;
+        if (!isMobile()) return;
+
+        let rafId = null;
+        const updateCenteredCard = () => {
+            if (!isMobile()) return;
+            rafId = requestAnimationFrame(() => {
+                const cards = cardRefs.current;
+                const len = data.length;
+                if (len === 0) return;
+                const vh = window.innerHeight / 2;
+                let closestIdx = 0;
+                let closestDist = Infinity;
+                for (let i = 0; i < len; i++) {
+                    const card = cards[i];
+                    if (!card || !card.getBoundingClientRect) continue;
+                    const rect = card.getBoundingClientRect();
+                    const centerY = rect.top + rect.height / 2;
+                    const dist = Math.abs(centerY - vh);
+                    if (dist < closestDist) {
+                        closestDist = dist;
+                        closestIdx = i;
+                    }
+                }
+                setCenteredIndex(closestIdx);
+            });
+        };
+
+        const handleResizeOrMediaChange = () => { if (isMobile()) updateCenteredCard(); };
+        updateCenteredCard();
+        window.addEventListener('scroll', updateCenteredCard, { passive: true });
+        window.addEventListener('touchmove', updateCenteredCard, { passive: true });
+        window.addEventListener('touchstart', updateCenteredCard, { passive: true });
+        window.addEventListener('resize', handleResizeOrMediaChange);
+        mql.addEventListener('change', handleResizeOrMediaChange);
+        return () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            window.removeEventListener('scroll', updateCenteredCard);
+            window.removeEventListener('touchmove', updateCenteredCard);
+            window.removeEventListener('touchstart', updateCenteredCard);
+            window.removeEventListener('resize', handleResizeOrMediaChange);
+            mql.removeEventListener('change', handleResizeOrMediaChange);
+        };
+    }, [data.length]);
+
     const moveTo = (x, y) => {
         gsap.to(pos.current, {
             x,
@@ -161,7 +211,8 @@ export const ChromaGrid = ({
                         delay: (i % columns) * 0.15,
                         ease: [0.215, 0.61, 0.355, 1]
                     }}
-                    className="chroma-card cursor-target"
+                    ref={el => { cardRefs.current[i] = el; }}
+                    className={`chroma-card cursor-target ${centeredIndex === i ? 'chroma-card--centered' : ''}`}
                     onMouseMove={handleCardMove}
                     onClick={() => handleCardClick(c.url)}
                     style={{

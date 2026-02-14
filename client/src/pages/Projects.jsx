@@ -153,7 +153,7 @@ const Projects = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="hero" style={{ minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <section className="hero projects-hero" style={{ minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

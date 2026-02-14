@@ -112,6 +112,32 @@
     text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
+/* Navbar back button (mobile, when not on home) */
+.navbar-back-btn {
+    padding: 0 14px;
+    border-radius: 14px;
+    gap: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.navbar-back-btn:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.navbar-back-btn:active {
+    transform: scale(0.98);
+}
+
+.navbar-back-text {
+    display: inline;
+}
+
 .nav-segment {
     border-radius: 20px;
     padding: 0 8px;
@@ -407,7 +433,268 @@
     letter-spacing: 1px;
 }
 
-@media (max-width: 1024px) {
+/* ============================================
+   UNIQUE MOBILE NAVIGATION DESIGN
+   Touch-Optimized, No Hover Required
+   ============================================ */
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(15, 15, 25, 0.98) 0%, rgba(25, 15, 35, 0.98) 100%);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #6366f1, #ec4899, #14b8a6) 1;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 1999;
+    padding: 20px;
+    animation: slideDownFade 0.3s ease-out;
+}
+
+@keyframes slideDownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 18px 24px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1.5px solid rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 4px 15px rgba(99, 102, 241, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
+}
+
+/* Always-visible gradient animation */
+.mobile-nav-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(99, 102, 241, 0.2) 25%,
+            rgba(236, 72, 153, 0.2) 50%,
+            rgba(20, 184, 166, 0.2) 75%,
+            transparent 100%);
+    animation: shimmer 3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Glowing border effect */
+.mobile-nav-link::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #6366f1, #ec4899, #14b8a6, #6366f1);
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(8px);
+    animation: borderGlow 4s linear infinite;
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.mobile-nav-link:active {
+    transform: scale(0.97);
+    box-shadow:
+        0 2px 8px rgba(99, 102, 241, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Icon indicator */
+.mobile-nav-link:nth-child(1)::before {
+    animation-delay: 0s;
+}
+
+.mobile-nav-link:nth-child(2)::before {
+    animation-delay: 0.5s;
+}
+
+.mobile-nav-link:nth-child(3)::before {
+    animation-delay: 1s;
+}
+
+.mobile-nav-link:nth-child(4)::before {
+    animation-delay: 1.5s;
+}
+
+/* ============================================
+   RESPONSIVE NAVBAR STYLES
+   ============================================ */
+
+/* Mobile & Tablet - Show hamburger menu (≤768px) */
+@media (max-width: 768px) {
+    .nav-segment {
+        display: none !important;
+    }
+
+    .mobile-toggle-btn {
+        display: flex !important;
+    }
+
+    /* Mobile nav - compact right bar, active indicator on right */
+    .mobile-nav-link::before {
+        left: auto !important;
+        right: 0 !important;
+        width: 0 !important;
+        height: 20px !important;
+        border-radius: 3px 0 0 3px !important;
+        animation: none !important;
+    }
+
+    .mobile-nav-link.mobile-nav-active::before {
+        width: 3px !important;
+        height: 20px !important;
+    }
+
+    .mobile-nav-link::after {
+        display: none !important;
+    }
+}
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
+
+    /* Unique Mobile Navbar Design */
+    .modern-header {
+        background: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(20, 10, 30, 0.95) 100%) !important;
+        border: 1px solid rgba(99, 102, 241, 0.2) !important;
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .logo-segment {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3) !important;
+        box-shadow:
+            0 4px 15px rgba(99, 102, 241, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .logo-icon {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+        box-shadow:
+            0 0 20px rgba(99, 102, 241, 0.6),
+            0 4px 10px rgba(0, 0, 0, 0.3) !important;
+        animation: logoPulse 3s ease-in-out infinite !important;
+    }
+
+    @keyframes logoPulse {
+
+        0%,
+        100% {
+            box-shadow:
+                0 0 20px rgba(99, 102, 241, 0.6),
+                0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        50% {
+            box-shadow:
+                0 0 30px rgba(99, 102, 241, 0.8),
+                0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .cta-segment {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%) !important;
+        border: 1px solid rgba(99, 102, 241, 0.25) !important;
+        box-shadow:
+            0 4px 15px rgba(99, 102, 241, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .status-indicator {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(20, 184, 166, 0.2) 100%) !important;
+        border: 1px solid rgba(16, 185, 129, 0.4) !important;
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.3) !important;
+    }
+
+    .status-pulse {
+        animation: statusPulse 2s infinite, statusGlow 2s infinite !important;
+    }
+
+    @keyframes statusGlow {
+
+        0%,
+        100% {
+            box-shadow: 0 0 12px #10b981;
+        }
+
+        50% {
+            box-shadow: 0 0 20px #10b981, 0 0 30px rgba(16, 185, 129, 0.5);
+        }
+    }
+
+    .mobile-toggle-btn {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%) !important;
+        border: 1.5px solid rgba(99, 102, 241, 0.4) !important;
+        color: #fff !important;
+        box-shadow:
+            0 4px 15px rgba(99, 102, 241, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .mobile-toggle-btn:active {
+        transform: scale(0.95) !important;
+        box-shadow:
+            0 2px 8px rgba(99, 102, 241, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+
+    /* Hide desktop nav, show mobile */
     .nav-segment {
         display: none;
     }
@@ -420,22 +707,356 @@
         max-width: 100%;
         justify-content: space-between;
     }
-}
 
-@media (max-width: 480px) {
+    /* Navbar Sizing */
+    .modern-header {
+        top: 8px;
+        padding: 0 10px;
+    }
+
+    .modern-header.scrolled {
+        top: 6px;
+    }
+
+    .header-segment {
+        height: 46px;
+    }
+
+    .logo-segment {
+        padding: 0 10px 0 6px;
+        gap: 8px;
+        border-radius: 14px;
+    }
+
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 9px;
+    }
+
+    .logo-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
     .logo-text {
         display: none;
     }
 
-    .logo-segment {
+    .cta-segment {
         padding: 0 8px;
+        gap: 10px;
+        border-radius: 14px;
+    }
+
+    .status-indicator {
+        padding: 5px 6px;
+        border-radius: 9px;
+        gap: 5px;
+    }
+
+    .status-pulse {
+        width: 6px;
+        height: 6px;
     }
 
     .status-text {
         display: none;
     }
 
+    .mobile-toggle-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+    }
+
+    .mobile-toggle-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Mobile Navigation Overlay */
+    .mobile-nav-overlay {
+        top: 60px;
+        padding: 12px;
+    }
+
+    .mobile-nav-content {
+        gap: 6px;
+    }
+
+    .mobile-nav-link {
+        padding: 12px 16px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    /* Mobile Sidebar */
+    .mobile-sidebar {
+        width: min(280px, 92vw);
+        padding: 40px 16px;
+    }
+
+    .sidebar-header {
+        margin-bottom: 50px;
+    }
+
+    .sidebar-close {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+
+    .sidebar-close svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .sidebar-nav {
+        gap: 10px;
+    }
+
+    .sidebar-link {
+        padding: 12px 16px;
+        border-radius: 14px;
+        font-size: 14px;
+        gap: 14px;
+    }
+
+    .sidebar-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+    }
+
+    .sidebar-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .sidebar-footer {
+        padding-top: 25px;
+    }
+
+    .sidebar-status {
+        padding: 14px;
+        border-radius: 14px;
+        font-size: 11px;
+        gap: 8px;
+    }
+}
+
+/* Small Mobile (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+
+    /* Unique Mobile Navbar Design */
+    .modern-header {
+        background: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(20, 10, 30, 0.95) 100%) !important;
+        border: 1px solid rgba(99, 102, 241, 0.2) !important;
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .logo-segment {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3) !important;
+        box-shadow:
+            0 4px 15px rgba(99, 102, 241, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .logo-icon {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+        box-shadow:
+            0 0 20px rgba(99, 102, 241, 0.6),
+            0 4px 10px rgba(0, 0, 0, 0.3) !important;
+        animation: logoPulse 3s ease-in-out infinite !important;
+    }
+
+    .cta-segment {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%) !important;
+        border: 1px solid rgba(99, 102, 241, 0.25) !important;
+        box-shadow:
+            0 4px 15px rgba(99, 102, 241, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+
     .status-indicator {
-        padding: 8px;
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(20, 184, 166, 0.2) 100%) !important;
+        border: 1px solid rgba(16, 185, 129, 0.4) !important;
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.3) !important;
+    }
+
+    .status-pulse {
+        animation: statusPulse 2s infinite, statusGlow 2s infinite !important;
+    }
+
+    .mobile-toggle-btn {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%) !important;
+        border: 1.5px solid rgba(99, 102, 241, 0.4) !important;
+        color: #fff !important;
+        box-shadow:
+            0 4px 15px rgba(99, 102, 241, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .mobile-toggle-btn:active {
+        transform: scale(0.95) !important;
+    }
+
+    /* Hide desktop nav, show mobile */
+    .nav-segment {
+        display: none;
+    }
+
+    .mobile-toggle-btn {
+        display: flex;
+    }
+
+    .header-inner {
+        max-width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Navbar Sizing */
+    .modern-header {
+        top: 14px;
+        padding: 0 14px;
+    }
+
+    .modern-header.scrolled {
+        top: 10px;
+    }
+
+    .header-segment {
+        height: 50px;
+    }
+
+    .logo-segment {
+        padding: 0 14px 0 8px;
+        gap: 11px;
+        border-radius: 17px;
+    }
+
+    .logo-icon {
+        width: 31px;
+        height: 31px;
+        border-radius: 10px;
+    }
+
+    .logo-text {
+        font-size: 13px;
+    }
+
+    .cta-segment {
+        padding: 0 11px;
+        gap: 13px;
+        border-radius: 17px;
+    }
+
+    .status-indicator {
+        padding: 6px 9px;
+        border-radius: 10px;
+        gap: 7px;
+    }
+
+    .status-pulse {
+        width: 7px;
+        height: 7px;
+    }
+
+    .status-text {
+        font-size: 10px;
+    }
+
+    .mobile-toggle-btn {
+        width: 33px;
+        height: 33px;
+        border-radius: 9px;
+    }
+
+    /* ============================================
+       MOBILE NAVIGATION OVERLAY (Reliable Full Width)
+       ============================================ */
+    .mobile-nav-overlay {
+        position: fixed !important;
+        top: 70px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        background: rgba(10, 10, 20, 0.98) !important;
+        padding: 24px !important;
+        border-bottom: 2px solid rgba(99, 102, 241, 0.3) !important;
+        backdrop-filter: blur(25px) !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+        border-radius: 0 0 24px 24px !important;
+    }
+
+    .mobile-nav-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+    }
+
+    .mobile-nav-link {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 16px !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 14px !important;
+        text-align: center !important;
+        box-shadow: none !important;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link:active {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2)) !important;
+        border-color: rgba(99, 102, 241, 0.4) !important;
+        transform: scale(0.98);
+    }
+
+    /* Reset Header Right Spacing */
+    .header-right {
+        gap: 16px !important;
+    }
+}
+
+/* Small Mobile & Tablets adjustments */
+@media (min-width: 481px) and (max-width: 1023px) {
+    .mobile-nav-overlay {
+        position: fixed !important;
+        top: 76px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        background: rgba(10, 10, 20, 0.98) !important;
+        padding: 30px !important;
+        border-bottom: 2px solid rgba(99, 102, 241, 0.3) !important;
+        backdrop-filter: blur(25px) !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+        border-radius: 0 0 30px 30px !important;
+    }
+
+    .mobile-nav-content {
+        gap: 16px !important;
+        max-width: 500px !important;
+        margin: 0 auto !important;
+    }
+
+    .mobile-nav-link {
+        padding: 18px !important;
+        font-size: 20px !important;
+        text-align: center !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 16px !important;
     }
 }

@@ -161,6 +161,7 @@ const Home = () => {
 
                     {/* Right Side - Content */}
                     <motion.div
+                        className="hero-content-block"
                         initial={{ opacity: 0, x: 40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1 }}
@@ -277,7 +278,8 @@ const Home = () => {
                                         href={social.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        initial={{ color: 'rgba(255,255,255,0.4)' }}
+                                        className="social-icon-link"
+                                        initial={{ color: social.color }}
                                         whileHover={{
                                             scale: 1.15,
                                             color: social.color,
@@ -288,6 +290,7 @@ const Home = () => {
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
+                                            color: social.color,
                                             transition: 'color 0.3s ease, filter 0.3s ease'
                                         }}
                                     >
