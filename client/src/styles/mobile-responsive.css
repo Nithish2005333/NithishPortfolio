@@ -300,14 +300,14 @@
 
   /* Profile card wrapper - improved size, do not pull upward */
   .pc-card-wrapper {
-    transform: scale(0.75) !important;
-    margin-bottom: -32px !important;
+    transform: scale(0.82) !important;
+    margin-bottom: -28px !important;
     margin-top: 0 !important;
   }
 
   .pc-card {
-    height: 60svh !important;
-    max-height: 320px !important;
+    height: 62svh !important;
+    max-height: 350px !important;
   }
 
   /* ========== SECTION TITLES ========== */
@@ -520,7 +520,7 @@
   /* ========== NITHISHWARAN - VariableProximity (Mobile Alternative) ========== */
   /* Instead of mouse tracking, we animate the font weight automatically */
   .hero-section .proximity-title {
-    font-size: clamp(24px, 8.5vw, 42px) !important;
+    font-size: clamp(27px, 10.5vw, 47px) !important;
     line-height: 1.1 !important;
     animation: weightBreathing 3s ease-in-out infinite alternate, textShine 4s linear infinite !important;
 
