@@ -154,7 +154,7 @@ const Home = () => {
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        style={{ flex: '1', minWidth: '350px', display: 'flex', justifyContent: 'center' }}
+                        style={{ flex: '1', minWidth: 'min(350px, 100%)', display: 'flex', justifyContent: 'center' }}
                     >
                         <ProfileCard />
                     </motion.div>
@@ -165,7 +165,7 @@ const Home = () => {
                         initial={{ opacity: 0, x: 40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1 }}
-                        style={{ flex: '1.5', minWidth: '350px' }}
+                        style={{ flex: '1.5', minWidth: 'min(350px, 100%)' }}
                     >
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', marginBottom: '16px' }}>
                             <motion.h2
@@ -222,11 +222,12 @@ const Home = () => {
                             Transforming complex technical ideas into <span style={{ color: 'white' }}>elegant, high-performance solutions</span> for the modern web.
                         </p>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+                        <div className="hero-actions" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                            <div className="hero-buttons-row" style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
                                 <DownloadButton />
                                 <Link
                                     to="/contact"
+                                    className="lets-connect-btn"
                                     style={{
                                         textDecoration: 'none',
                                         padding: '10px 28px',

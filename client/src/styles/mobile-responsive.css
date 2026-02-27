@@ -280,22 +280,18 @@
   }
 
   .hero-section h2 {
-    font-size: 28px !important;
-    margin-bottom: 6px !important;
-  }
-
-  .proximity-title {
-    font-size: 38px !important;
+    font-size: 22px !important;
+    margin-bottom: 2px !important;
   }
 
   .hero-section p {
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 24px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 16px !important;
   }
 
   .hero-section [style*="gap: '24px'"] {
-    gap: 14px !important;
+    gap: 12px !important;
   }
 
   .hero-section [style*="fontSize: '30px'"] {
@@ -304,14 +300,14 @@
 
   /* Profile card wrapper - improved size, do not pull upward */
   .pc-card-wrapper {
-    transform: scale(0.88) !important;
-    margin-bottom: -24px !important;
+    transform: scale(0.75) !important;
+    margin-bottom: -32px !important;
     margin-top: 0 !important;
   }
 
   .pc-card {
-    height: 65svh !important;
-    max-height: 380px !important;
+    height: 60svh !important;
+    max-height: 320px !important;
   }
 
   /* ========== SECTION TITLES ========== */
@@ -471,34 +467,51 @@
   }
 
   /* ========== DOWNLOAD BUTTON - Fix text overlap on mobile ========== */
+  .hero-buttons-row {
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
   .download-container {
-    min-width: 165px !important;
+    width: 50% !important;
+    min-width: 0 !important;
+  }
+
+  .lets-connect-btn {
+    width: 50% !important;
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    justify-content: center !important;
   }
 
   .download-label {
-    overflow: visible !important;
-    padding: 5px 8px 5px 6px !important;
-    min-width: 165px !important;
+    overflow: hidden !important;
+    padding: 6px 8px 6px 6px !important;
+    min-width: 0 !important;
+    width: 100% !important;
   }
 
   .download-label .download-circle {
-    width: 38px !important;
-    height: 38px !important;
+    width: 32px !important;
+    height: 32px !important;
     flex-shrink: 0 !important;
   }
 
   .download-label .download-title,
   .download-label .download-title:last-child {
-    left: 56px !important;
+    left: 44px !important;
+    font-size: 12px !important;
   }
 
   .download-label .download-circle .download-icon {
-    width: 20px !important;
+    width: 16px !important;
   }
 
   @keyframes showInstalledMessage {
     100% {
-      left: 56px;
+      left: 44px;
       opacity: 1;
       visibility: visible;
     }
@@ -507,7 +520,7 @@
   /* ========== NITHISHWARAN - VariableProximity (Mobile Alternative) ========== */
   /* Instead of mouse tracking, we animate the font weight automatically */
   .hero-section .proximity-title {
-    font-size: clamp(40px, 12vw, 80px) !important;
+    font-size: clamp(24px, 8.5vw, 42px) !important;
     line-height: 1.1 !important;
     animation: weightBreathing 3s ease-in-out infinite alternate, textShine 4s linear infinite !important;
 

@@ -17,7 +17,7 @@ const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
 const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
 
 const ProfileCardComponent = ({
-    avatarUrl = profilePhoto,
+    avatarUrl = 'https://res.cloudinary.com/di2c9rec3/image/upload/v1772205656/Gemini_Generated_Image_s7tv35s7tv35s7tv-removebg-preview_xqqq2t.png',
     iconUrl = '',
     grainUrl = '',
     innerGradient,
@@ -28,7 +28,7 @@ const ProfileCardComponent = ({
     enableTilt = true,
     enableMobileTilt = false,
     mobileTiltSensitivity = 5,
-    miniAvatarUrl,
+    miniAvatarUrl = 'https://res.cloudinary.com/di2c9rec3/image/upload/v1772204931/Profile_h06vnj.png',
     name = 'Nithishwaran',
     title = 'Full Stack Developer',
     handle = 'Nithishwaran2005333',
