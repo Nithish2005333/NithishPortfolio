@@ -57,6 +57,7 @@ const Projects = () => {
             borderColor: "#3B82F6",
             gradient: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
             url: "https://placementapp-0htf.onrender.com/",
+            github: "https://github.com/Nithish2005333/PlacementApp",
             image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1770983002/Screenshot_2026-02-13_165525_ttrhif.png",
             icon: <Code2 size={40} />
         },

@@ -7,7 +7,7 @@ import DiscoverButton from '../components/DiscoverButton';
 import VariableProximity from '../components/VariableProximity';
 import ProfileCard from '../components/ProfileCard';
 import DownloadButton from '../components/DownloadButton';
-import ElectricBorder from '../components/ElectricBorder';
+import NeonGlowBorder from '../components/NeonGlowBorder';
 import ChromaGrid from '../components/ChromaGrid';
 import { ArrowRight, Code2, Sparkles, Smartphone, Zap, Globe, Cpu, Terminal, Braces, Hash, Monitor, Palette } from 'lucide-react';
 import {
@@ -56,6 +56,7 @@ const Home = () => {
             category: "Platform",
             description: "An integrated career management hub providing students and admins with verified profile synchronization.",
             url: "https://placementapp-0htf.onrender.com/",
+            github: "https://github.com/Nithish2005333/PlacementApp",
             image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1770983002/Screenshot_2026-02-13_165525_ttrhif.png",
             borderColor: "#3B82F6",
             gradient: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
@@ -374,80 +375,115 @@ const Home = () => {
                             transition={{ delay: i * 0.12, duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], type: "tween" }}
                             style={{ willChange: "transform" }}
                         >
-                            <ElectricBorder
+                            <NeonGlowBorder
                                 color={item.color}
                                 borderRadius={32}
-                                speed={1.5}
-                                chaos={0.12}
+                                speed="3s"
                             >
                                 <motion.div
-                                    whileHover={{ y: -10 }}
+                                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
                                     className="glass-card"
                                     style={{
                                         padding: '50px 40px',
                                         height: '100%',
-                                        border: 'none',
-                                        background: 'rgba(255, 255, 255, 0.02)',
-                                        backdropFilter: 'blur(20px)',
+                                        border: '1px solid rgba(255, 255, 255, 0.05)',
+                                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%)',
+                                        backdropFilter: 'blur(24px)',
                                         position: 'relative',
                                         overflow: 'hidden',
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        alignItems: 'flex-start'
+                                        alignItems: 'flex-start',
+                                        boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5)'
                                     }}
                                 >
-                                    {/* background number */}
+                                    {/* background number - Outline style for more class */}
                                     <span style={{
                                         position: 'absolute',
-                                        top: '-10px',
-                                        right: '10px',
-                                        fontSize: '120px',
+                                        top: '0px',
+                                        right: '25px',
+                                        fontSize: '110px',
                                         fontWeight: 900,
-                                        color: item.color,
-                                        opacity: 0.05,
+                                        color: 'transparent',
+                                        WebkitTextStroke: `1px ${item.color}33`,
+                                        opacity: 0.2,
                                         fontFamily: 'Space Grotesk, sans-serif',
-                                        pointerEvents: 'none'
+                                        pointerEvents: 'none',
+                                        lineHeight: 1
                                     }}>
                                         {item.number}
                                     </span>
 
                                     <div style={{
                                         color: item.color,
-                                        marginBottom: '32px',
-                                        background: `${item.color}15`,
-                                        width: '80px',
-                                        height: '80px',
-                                        borderRadius: '20px',
+                                        marginBottom: '35px',
+                                        background: `linear-gradient(135deg, ${item.color}25, transparent)`,
+                                        width: '74px',
+                                        height: '74px',
+                                        borderRadius: '22px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        boxShadow: `0 0 20px ${item.color}22`,
-                                        border: `1px solid ${item.color}33`
+                                        boxShadow: `0 8px 32px -4px ${item.color}22`,
+                                        border: `1px solid ${item.color}30`,
+                                        position: 'relative',
+                                        zIndex: 2
                                     }}>
                                         {item.icon}
                                     </div>
 
                                     <h3 style={{
                                         fontSize: '28px',
-                                        marginBottom: '16px',
+                                        marginBottom: '18px',
                                         fontWeight: 800,
                                         fontFamily: 'Space Grotesk, sans-serif',
-                                        color: 'white'
+                                        color: 'white',
+                                        letterSpacing: '-0.02em'
                                     }}>
                                         {item.title}
                                     </h3>
 
                                     <p style={{
-                                        color: 'rgba(255,255,255,0.6)',
+                                        color: 'rgba(255,255,255,0.65)',
                                         fontSize: '17px',
-                                        lineHeight: 1.7,
+                                        lineHeight: 1.6,
                                         margin: 0,
-                                        flex: 1
+                                        flex: 1,
+                                        fontWeight: 300
                                     }}>
                                         {item.desc}
                                     </p>
+
+                                    {/* Subtle Bottom Accent Gradient */}
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        height: '4px',
+                                        background: `linear-gradient(to right, transparent, ${item.color}44, transparent)`,
+                                        opacity: 0.5
+                                    }} />
+
+                                    {/* Hover Shine Effect */}
+                                    <motion.div
+                                        initial={{ x: '-100%', opacity: 0 }}
+                                        whileHover={{ x: '200%', opacity: 0.15 }}
+                                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                                        style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '50%',
+                                            height: '100%',
+                                            background: 'linear-gradient(90deg, transparent, #fff, transparent)',
+                                            transform: 'skewX(-25deg)',
+                                            pointerEvents: 'none',
+                                            zIndex: 5
+                                        }}
+                                    />
                                 </motion.div>
-                            </ElectricBorder>
+                            </NeonGlowBorder>
                         </motion.div>
                     ))}
                 </div>
