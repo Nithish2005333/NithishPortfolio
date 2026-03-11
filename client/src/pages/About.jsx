@@ -140,7 +140,7 @@ const About = () => {
             year: 'Projects',
             title: 'Hands‑on Project Experience',
             description:
-                'Built Placement App (MERN), Car Rental web app, Portfolio sites, Student Management System, Web Tech Record, Blockchain Quiz DApp, and Podcast Android app.'
+                'Built Freshurah (Next.js), Placement App (MERN), Car Rental web app, Portfolio sites, Student Management System, Web Tech Record, Blockchain Quiz DApp, and Podcast Android app.'
         },
         {
             year: 'Achievements & Certifications',

@@ -10,6 +10,19 @@ import ChromaGrid from '../components/ChromaGrid';
 const Projects = () => {
     const projects = [
         {
+            title: "Freshurah",
+            subtitle: "Next.js • Tailwind v4 • Framer Motion",
+            handle: "Beverage Experience",
+            category: "E-commerce Landing",
+            description: "A high-end, immersive landing page for a modern beverage shop featuring dynamic theming, fluid animations, and ultra-premium glassmorphism UI.",
+            borderColor: "#FF6B6B",
+            gradient: "linear-gradient(135deg, #FF6B6B 0%, #FFD93D 100%)",
+            url: "https://freshurah.nexurah.in/",
+            github: "https://github.com/Nithish2005333/Beverages",
+            image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1773210977/Screenshot_2026-03-06_102511_sc5ar5.png",
+            icon: <Smartphone size={40} />
+        },
+        {
             title: "Nimbus Cloud",
             subtitle: "React • Vercel • Cloud Services",
             handle: "Cloud Platform",

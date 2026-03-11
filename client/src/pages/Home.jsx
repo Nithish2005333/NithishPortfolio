@@ -24,6 +24,19 @@ const Home = () => {
     const heroRef = useRef(null);
     const projects = [
         {
+            title: "Freshurah",
+            subtitle: "Next.js • Tailwind v4 • Framer Motion",
+            handle: "Beverage Experience",
+            category: "E-commerce Landing",
+            description: "A high-end, immersive landing page for a modern beverage shop featuring dynamic theming, fluid animations, and ultra-premium glassmorphism UI.",
+            url: "https://freshurah.nexurah.in/",
+            github: "https://github.com/Nithish2005333/Beverages",
+            image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1773210977/Screenshot_2026-03-06_102511_sc5ar5.png",
+            borderColor: "#FF6B6B",
+            gradient: "linear-gradient(135deg, #FF6B6B 0%, #FFD93D 100%)",
+            icon: <Smartphone size={40} />
+        },
+        {
             title: "Nimbus Cloud",
             subtitle: "React • Vercel • Cloud Services",
             handle: "Cloud Platform",
@@ -34,19 +47,6 @@ const Home = () => {
             image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1771000699/690b4fa1-152f-4fad-8339-9b41b76046f6.png",
             borderColor: "#0EA5E9",
             gradient: "linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)",
-            icon: <Globe size={40} />
-        },
-        {
-            title: "Sabarnaa Printers",
-            subtitle: "React • Tailwind • Cloudinary",
-            handle: "Business Website",
-            category: "Commercial",
-            description: "A premium digital gateway for Sabarnaa Printers, highlighting high-end offset printing and innovative packaging solutions.",
-            url: "https://sabarnaa-printerz.vercel.app/",
-            github: "https://github.com/Nithish2005333/sabarnaa-printerz.git",
-            image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1770983590/d824c9cd-1f83-4877-b759-5b6c92bc5f0a.png",
-            borderColor: "#F43F5E",
-            gradient: "linear-gradient(135deg, #f43f5e 0%, #ec4899 100%)",
             icon: <Globe size={40} />
         },
         {
