@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import BackButton from '../components/BackButton';
 import LearnMoreButton from '../components/LearnMoreButton';
 import DiscoverButton from '../components/DiscoverButton';
-import { ArrowRight, Code2, Smartphone, Zap, Globe, Compass, Sparkles, BookOpen, Building2, ShoppingBag } from 'lucide-react';
+import { ArrowRight, Code2, Smartphone, Zap, Globe, Compass, Sparkles, BookOpen, Building2, ShoppingBag, Activity } from 'lucide-react';
 import ChromaGrid from '../components/ChromaGrid';
 
 const Projects = () => {
@@ -23,6 +23,18 @@ const Projects = () => {
             icon: <Smartphone size={40} />
         },
         {
+            title: "Agency Analog",
+            subtitle: "Brand Strategy • Creative Design • Web",
+            handle: "Creative Agency",
+            category: "Agency Website",
+            description: "A modern creative agency platform dedicated to human-centric brand design, immersive experiences, and digital strategy.",
+            borderColor: "#F43F5E",
+            gradient: "linear-gradient(135deg, #f43f5e 0%, #fb7185 100%)",
+            url: "http://www.agencyanalog.com/",
+            image: "/projects/agencyanalog.webp",
+            icon: <Sparkles size={40} />
+        },
+        {
             title: "TripStart",
             subtitle: "Luxury Travel • Curated Journeys • Booking",
             handle: "Travel Platform",
@@ -35,16 +47,40 @@ const Projects = () => {
             icon: <Compass size={40} />
         },
         {
-            title: "Agency Analog",
-            subtitle: "Brand Strategy • Creative Design • Web",
-            handle: "Creative Agency",
+            title: "Dr. RRB Pain Care",
+            subtitle: "Next.js • React • SEO • Healthcare",
+            handle: "Healthcare Platform",
+            category: "Medical & Health",
+            description: "Specialized medical platform for India's first dual-board certified interventional pain specialist, serving 4,000+ patients.",
+            borderColor: "#0EA5E9",
+            gradient: "linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)",
+            url: "https://drrrbpaincare.com/",
+            image: "/projects/rrb.webp",
+            icon: <Activity size={40} />
+        },
+        {
+            title: "CR8IVE",
+            subtitle: "Next.js • Digital Agency • Marketing",
+            handle: "Digital Agency",
             category: "Agency Website",
-            description: "A modern creative agency platform dedicated to human-centric brand design, immersive experiences, and digital strategy.",
-            borderColor: "#F43F5E",
-            gradient: "linear-gradient(135deg, #f43f5e 0%, #fb7185 100%)",
-            url: "http://www.agencyanalog.com/",
-            image: "/projects/agencyanalog.webp",
+            description: "Performance-driven creative agency website with integrated lead funnels, empowering client brands generating 3 Cr+ revenue.",
+            borderColor: "#EC4899",
+            gradient: "linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)",
+            url: "https://www.cr8ive.in/",
+            image: "/projects/cr8ive.webp",
             icon: <Sparkles size={40} />
+        },
+        {
+            title: "Dr. Kumaravel Properties",
+            subtitle: "Next.js • Real Estate • Farmland",
+            handle: "Farmland Investment",
+            category: "Real Estate",
+            description: "Exclusive farmland investment platform for a 100-acre gated eco-community featuring interactive layouts and automated lead funnels.",
+            borderColor: "#10B981",
+            gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            url: "https://www.drkumaravelproperties.com/",
+            image: "/projects/kumaravel.webp",
+            icon: <Building2 size={40} />
         },
         {
             title: "Saradhi Pubgrid",

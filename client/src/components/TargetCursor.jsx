@@ -132,17 +132,8 @@ const TargetCursor = ({
         window.addEventListener('mousemove', moveHandler);
 
         const scrollHandler = () => {
-            if (!activeTarget || !cursorRef.current) return;
-            const mouseX = gsap.getProperty(cursorRef.current, 'x');
-            const mouseY = gsap.getProperty(cursorRef.current, 'y');
-            const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
-            const isStillOverTarget =
-                elementUnderMouse &&
-                (elementUnderMouse === activeTarget || elementUnderMouse.closest(targetSelector) === activeTarget);
-            if (!isStillOverTarget) {
-                if (currentLeaveHandler) {
-                    currentLeaveHandler();
-                }
+            if (activeTarget && currentLeaveHandler) {
+                currentLeaveHandler();
             }
         };
         window.addEventListener('scroll', scrollHandler, { passive: true });

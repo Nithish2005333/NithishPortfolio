@@ -130,24 +130,6 @@ const Contact = () => {
                     WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 100%)'
                 }} />
 
-                <LightRays
-                    raysOrigin="bottom-center"
-                    raysColor="#475569"
-                    raysColor2="#1e293b"
-                    raysColor3="#334155"
-                    raysSpeed={0.1}
-                    rayLength={0.4}
-                    lightSpread={0.3}
-                    saturation={0}
-                    className="opacity-[0.01]"
-                />
-
-                <FloatingLines
-                    linesGradient={['#334155', '#475569', '#1e293b']}
-                    animationSpeed={0.3}
-                    style={{ opacity: 0.15 }}
-                />
-
                 {/* Glowing Ambience Orbs */}
                 <motion.div
                     animate={{

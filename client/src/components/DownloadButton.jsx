@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './DownloadButton.css';
 
-const RESUME_DOWNLOAD_URL = 'https://drive.google.com/uc?export=download&id=1keets2j-zcGLNxBx3LN5Njnmagz1zHiJ';
+const RESUME_DOWNLOAD_URL = '/Nithishwaran_Resume_Updated.pdf';
 
-const DownloadButton = ({ resumeUrl = RESUME_DOWNLOAD_URL, fileName = 'Nithishwaran_Resume.pdf' }) => {
+const DownloadButton = ({ resumeUrl = RESUME_DOWNLOAD_URL, fileName = 'Nithishwaran_Resume_Updated.pdf' }) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleDownload = () => {
@@ -11,16 +11,16 @@ const DownloadButton = ({ resumeUrl = RESUME_DOWNLOAD_URL, fileName = 'Nithishwa
 
         setIsChecked(true);
 
-        // Trigger direct download - Google Drive export URL prompts file download
         const link = document.createElement('a');
         link.href = resumeUrl;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
         link.setAttribute('download', fileName);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
+        setTimeout(() => {
+            setIsChecked(false);
+        }, 3500);
     };
 
     return (

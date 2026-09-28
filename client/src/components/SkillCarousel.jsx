@@ -81,8 +81,23 @@ const SkillCarousel = ({ skills }) => {
 
         wrapperRef.current?.addEventListener('wheel', handleWheel, { passive: false, capture: true });
 
+        let isIntersecting = true;
+        const observer = typeof IntersectionObserver !== 'undefined' ? new IntersectionObserver(([entry]) => {
+            isIntersecting = entry.isIntersecting;
+            if (isIntersecting && !rafRef.current && !selectedSkill) {
+                rafRef.current = requestAnimationFrame(loop);
+            }
+        }, { threshold: 0.05 }) : null;
+
+        if (wrapperRef.current && observer) {
+            observer.observe(wrapperRef.current);
+        }
+
         const loop = () => {
-            if (selectedSkill) return;
+            if (selectedSkill || !isIntersecting) {
+                rafRef.current = null;
+                return;
+            }
             rotationRef.current += AUTO_ROTATE_SPEED;
             applyTransform();
             rafRef.current = requestAnimationFrame(loop);
@@ -92,6 +107,7 @@ const SkillCarousel = ({ skills }) => {
         return () => {
             wrapperRef.current?.removeEventListener('wheel', handleWheel, { capture: true });
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
+            if (observer) observer.disconnect();
         };
     }, [applyTransform, selectedSkill]);
 

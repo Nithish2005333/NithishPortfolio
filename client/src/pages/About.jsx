@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -115,38 +116,59 @@ const About = () => {
         { node: <FaFilePowerpoint color="#B7472A" />, title: "PowerPoint" },
     ];
 
+    const [techRow1, techRow2] = useMemo(() => {
+        const mid = Math.ceil(techLogos.length / 2);
+        return [techLogos.slice(0, mid), techLogos.slice(mid)];
+    }, [techLogos]);
+
     const timeline = [
         {
-            year: '2019 - 2020',
-            title: 'SSLC – Govt Boys Hr Sec School, Vangal (Karur)',
-            description: 'Completed SSLC with 81.4%, building a strong foundation in core academics.'
+            year: 'July 2026 - Present',
+            title: 'Frontend Developer – Rhodnet AI',
+            description:
+                'Leading frontend architecture and development for live client projects including Agency Analog, Zenthora Global, Actify Aura, Petals & Knots, TripStart, Max Code Softwares, Saradhi Pubgrid, and Sumathi Steel. Developing ongoing platforms including LMS, Vruxo Furnitures e-commerce & branding, and Ooda Bond portfolio.'
+        },
+        {
+            year: 'May 2026',
+            title: 'Research Paper Publication – ICNGC-2026',
+            description:
+                'Authored and presented "Encrypted Cloud Storage Using Zero-Knowledge Architecture" at the International Conference on Next-Gen Computing (ISSN: 2348-4098). Pioneered client-side AES-256-GCM and RSA-OAEP cryptographic file security.'
+        },
+        {
+            year: '2024 - 2026',
+            title: 'Freelance Web Developer',
+            description:
+                'Engineered high-performance web platforms for Dr. RRB Pain Care (serving 4,000+ patients), Evergreen Farms / Dr. Kumaravel Properties (100-acre gated farmland community with lead automation), CR8IVE & Digi Force (powering digital campaigns generating 3 Cr+ revenue).'
+        },
+        {
+            year: '2024',
+            title: 'Full Stack Developer Intern – PARKQWICK Pvt. Ltd.',
+            description:
+                'Engineered production-grade MERN stack features in live production environments, designed RESTful APIs, integrated 3rd-party services, and optimized application performance.'
+        },
+        {
+            year: '2022 - 2026',
+            title: 'B.E. CSE – Anna University Regional Campus, Coimbatore',
+            description:
+                'Pursuing Bachelor of Computer Science and Engineering with an outstanding CGPA of 8.32 / 10.0. Deep specialization in web development, database architectures, and distributed systems.'
         },
         {
             year: '2021 - 2022',
             title: 'HSC – Govt Boys Hr Sec School, Vangal (Karur)',
-            description: 'Finished Higher Secondary with 72.8%, focusing on Computer Science stream.'
-        },
-        {
-            year: '2022 - Present',
-            title: 'B.E. CSE – Anna University Regional Campus, Coimbatore',
-            description: 'Pursuing Bachelor of Computer Science and Engineering with a CGPA of 8.06 (up to 6th semester).'
-        },
-        {
-            year: '2023',
-            title: 'Full Stack Development Intern – PARKQWICK Pvt. Ltd.',
-            description: 'Worked on MERN stack features for a smart parking and mobility platform, contributing to real-world product development.'
-        },
-        {
-            year: 'Projects',
-            title: 'Hands‑on Project Experience',
             description:
-                'Built Freshurah (Next.js), Placement App (MERN), Car Rental web app, Portfolio sites, Student Management System, Web Tech Record, Blockchain Quiz DApp, and Podcast Android app.'
+                'Completed Higher Secondary Certificate with 72.8%, focusing on Computer Science fundamentals, mathematics, and programming.'
+        },
+        {
+            year: '2019 - 2020',
+            title: 'SSLC – Govt Boys Hr Sec School, Vangal (Karur)',
+            description:
+                'Graduated Secondary School Leaving Certificate with 81.4%, building a solid core academic foundation.'
         },
         {
             year: 'Achievements & Certifications',
-            title: 'Sports & Tech Milestones',
+            title: 'Sports Honors & Technical Certifications',
             description:
-                'Represented Tamil Nadu in national-level throwball and school games competitions; completed professional certifications in MongoDB, Oracle Cloud Infrastructure (OCI) Blockchain, Android App Development, AI Fluency, and various other cutting-edge technologies.'
+                'Gold Medalist in 22nd Senior State Throwball Championship (2024-25), Silver in 33rd Junior Nationals (2023-24), Bronze in 21st Junior State (2023-24), and Tamil Nadu Representative in 64th National School Games (U14). Professional certifications from MongoDB University, Oracle OCI Blockchain, Google Android Development, and Microsoft AI Fluency.'
         }
     ];
 
@@ -245,13 +267,13 @@ const About = () => {
 
                                 <div style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: 1.8 }}>
                                     <p style={{ marginBottom: '20px', fontSize: '19px', color: '#f8fafc', fontWeight: 600, borderLeft: '4px solid #6366f1', paddingLeft: '20px' }}>
-                                        Hi! I'm a passionate Computer Science student and developer driven by a deep curiosity for building robust software systems.
+                                        Frontend Developer with professional and freelance experience building responsive websites and full-stack applications using React.js, Next.js, and the MERN stack.
                                     </p>
                                     <p style={{ marginBottom: '16px' }}>
-                                        I thrive on the challenge of translating complex requirements into elegant, efficient, and user-centric solutions. My journey is defined by a relentless pursuit of knowledge—mastering the intricacies of web development and optimizing algorithms.
+                                        Skilled in REST API integration, authentication, database-driven development, and website branding. Proven track record delivering 20+ production websites across corporate, e-commerce, healthcare, and real estate domains.
                                     </p>
                                     <p style={{ margin: 0 }}>
-                                        With a hands-on approach honed through diverse projects and internships, I don't just write code; I engineer value. I am committed to writing clean, maintainable code and fostering an environment of innovation.
+                                        Recognized researcher published at ICNGC-2026 for zero-knowledge cloud encryption, and national-level athlete holding a 8.32 CGPA at Anna University Regional Campus, Coimbatore.
                                     </p>
                                 </div>
                             </div>
@@ -260,10 +282,10 @@ const About = () => {
                         {/* Right Column - Quick Stats & Info */}
                         <div className="about-stats-grid" style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gap: '16px' }}>
                             {[
-                                { label: 'Projects Completed', value: '15+', icon: <Globe size={24} />, color: '#6366f1' },
+                                { label: 'Projects Completed', value: '20+', icon: <Globe size={24} />, color: '#6366f1' },
                                 { label: 'Core Technologies', value: '20+', icon: <Zap size={24} />, color: '#ec4899' },
                                 { label: 'Years Experience', value: '2+', icon: <Code2 size={24} />, color: '#8b5cf6' },
-                                { label: 'Current CGPA', value: '8.06', icon: <Activity size={24} />, color: '#10b981' }
+                                { label: 'Current CGPA', value: '8.32', icon: <Activity size={24} />, color: '#10b981' }
                             ].map((stat, idx) => (
                                 <motion.div
                                     key={idx}
@@ -393,7 +415,7 @@ const About = () => {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', position: 'relative', zIndex: 3 }}>
                             <LogoLoop
-                                logos={techLogos.slice(0, Math.ceil(techLogos.length / 2))}
+                                logos={techRow1}
                                 speed={40}
                                 direction="left"
                                 pauseOnHover={true}
@@ -404,7 +426,7 @@ const About = () => {
                                 gap={24}
                             />
                             <LogoLoop
-                                logos={techLogos.slice(Math.ceil(techLogos.length / 2))}
+                                logos={techRow2}
                                 speed={45}
                                 direction="right"
                                 pauseOnHover={true}

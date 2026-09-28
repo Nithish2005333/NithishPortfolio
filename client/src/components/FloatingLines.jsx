@@ -284,8 +284,8 @@ export default function FloatingLines({
     const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     camera.position.z = 1;
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    const renderer = new WebGLRenderer({ antialias: false, alpha: false, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
     containerRef.current.appendChild(renderer.domElement);
@@ -411,7 +411,38 @@ export default function FloatingLines({
     }
 
     let raf = 0;
+    let isHidden = false;
+    let isScrolling = false;
+    let scrollTimeout = null;
+    let frameCount = 0;
+
+    const onVisibilityChange = () => {
+      isHidden = document.hidden;
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    const onScroll = () => {
+      isScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 120);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
     const renderLoop = () => {
+      if (isHidden) {
+        raf = requestAnimationFrame(renderLoop);
+        return;
+      }
+
+      frameCount++;
+      // During active fast scrolling, throttle background WebGL to half-rate to give compositor 100% frame budget
+      if (isScrolling && frameCount % 2 !== 0) {
+        raf = requestAnimationFrame(renderLoop);
+        return;
+      }
+
       uniforms.iTime.value = clock.getElapsedTime();
 
       if (interactive) {
@@ -434,6 +465,9 @@ export default function FloatingLines({
 
     return () => {
       cancelAnimationFrame(raf);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('scroll', onScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
       // eslint-disable-next-line react-hooks/exhaustive-deps
       if (ro && containerRef.current) {
         ro.disconnect();

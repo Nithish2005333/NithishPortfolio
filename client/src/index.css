@@ -21,6 +21,7 @@
 
 html {
   background-color: #050508;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -48,6 +49,7 @@ body::before {
     radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
     radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
   pointer-events: none;
+  transform: translateZ(0);
 }
 
 body::after {
@@ -64,6 +66,8 @@ body::after {
   -webkit-mask-image: radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), black 0%, transparent 70%);
   pointer-events: none;
   opacity: 0.9;
+  transform: translateZ(0);
+  will-change: mask-image;
 }
 
 .bg-beacons {
@@ -180,10 +184,12 @@ h6 {
 /* Glass Card */
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 24px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: translateZ(0);
 }
 
 .glass-card:hover {

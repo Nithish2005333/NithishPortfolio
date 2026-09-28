@@ -1,4 +1,4 @@
-import { forwardRef, useMemo, useRef, useEffect } from 'react';
+import { forwardRef, useMemo, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import './VariableProximity.css';
 
@@ -60,8 +60,42 @@ const VariableProximity = forwardRef((props, ref) => {
 
     const letterRefs = useRef([]);
     const interpolatedSettingsRef = useRef([]);
+    const letterCentersRef = useRef([]);
+    const inViewRef = useRef(true);
     const mousePositionRef = useMousePositionRef(containerRef);
     const lastPositionRef = useRef({ x: null, y: null });
+
+    useEffect(() => {
+        const target = containerRef?.current;
+        if (!target || typeof IntersectionObserver === 'undefined') return;
+        const observer = new IntersectionObserver(([entry]) => {
+            inViewRef.current = entry.isIntersecting;
+        }, { threshold: 0.05 });
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, [containerRef]);
+
+    const updateLetterCenters = useCallback(() => {
+        if (!containerRef?.current) return;
+        const containerRect = containerRef.current.getBoundingClientRect();
+        letterCentersRef.current = letterRefs.current.map(el => {
+            if (!el) return null;
+            const r = el.getBoundingClientRect();
+            return {
+                x: r.left + r.width / 2 - containerRect.left,
+                y: r.top + r.height / 2 - containerRect.top
+            };
+        });
+    }, [containerRef]);
+
+    useEffect(() => {
+        const timeout = setTimeout(updateLetterCenters, 150);
+        window.addEventListener('resize', updateLetterCenters);
+        return () => {
+            clearTimeout(timeout);
+            window.removeEventListener('resize', updateLetterCenters);
+        };
+    }, [updateLetterCenters]);
 
     const parsedSettings = useMemo(() => {
         const parseSettings = settingsStr =>
@@ -101,27 +135,23 @@ const VariableProximity = forwardRef((props, ref) => {
     };
 
     useAnimationFrame(() => {
-        if (!containerRef?.current) return;
-        const containerRect = containerRef.current.getBoundingClientRect();
+        if (!inViewRef.current || !containerRef?.current) return;
         const { x, y } = mousePositionRef.current;
         if (lastPositionRef.current.x === x && lastPositionRef.current.y === y) {
             return;
         }
         lastPositionRef.current = { x, y };
 
+        if (!letterCentersRef.current.length) {
+            updateLetterCenters();
+        }
+
         letterRefs.current.forEach((letterRef, index) => {
             if (!letterRef) return;
+            const center = letterCentersRef.current[index];
+            if (!center) return;
 
-            const rect = letterRef.getBoundingClientRect();
-            const letterCenterX = rect.left + rect.width / 2 - containerRect.left;
-            const letterCenterY = rect.top + rect.height / 2 - containerRect.top;
-
-            const distance = calculateDistance(
-                mousePositionRef.current.x,
-                mousePositionRef.current.y,
-                letterCenterX,
-                letterCenterY
-            );
+            const distance = calculateDistance(x, y, center.x, center.y);
 
             if (distance >= radius) {
                 letterRef.style.fontVariationSettings = fromFontVariationSettings;

@@ -37,18 +37,6 @@ const Home = () => {
             icon: <Smartphone size={40} />
         },
         {
-            title: "TripStart",
-            subtitle: "Luxury Travel • Curated Journeys • Booking",
-            handle: "Travel Platform",
-            category: "Travel & Hospitality",
-            description: "Curated luxury travel experiences and bespoke international and domestic itineraries with seamless booking.",
-            url: "https://tripstart.in/",
-            image: "/projects/tripstart.webp",
-            borderColor: "#06B6D4",
-            gradient: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
-            icon: <Compass size={40} />
-        },
-        {
             title: "Agency Analog",
             subtitle: "Brand Strategy • Creative Design • Web",
             handle: "Creative Agency",
@@ -59,6 +47,18 @@ const Home = () => {
             borderColor: "#F43F5E",
             gradient: "linear-gradient(135deg, #f43f5e 0%, #fb7185 100%)",
             icon: <Sparkles size={40} />
+        },
+        {
+            title: "TripStart",
+            subtitle: "Luxury Travel • Curated Journeys • Booking",
+            handle: "Travel Platform",
+            category: "Travel & Hospitality",
+            description: "Curated luxury travel experiences and bespoke international and domestic itineraries with seamless booking.",
+            url: "https://tripstart.in/",
+            image: "/projects/tripstart.webp",
+            borderColor: "#06B6D4",
+            gradient: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
+            icon: <Compass size={40} />
         }
     ];
 

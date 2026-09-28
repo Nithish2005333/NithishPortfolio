@@ -147,8 +147,8 @@ export function SmoothCursor({
         restDelta: 0.001,
     },
 }) {
-    const [isMoving, setIsMoving] = useState(false)
     const [cursorType, setCursorType] = useState('default')
+    const cursorTypeRef = useRef('default')
     const lastMousePos = useRef({ x: 0, y: 0 })
     const velocity = useRef({ x: 0, y: 0 })
     const lastUpdateTime = useRef(Date.now())
@@ -184,6 +184,8 @@ export function SmoothCursor({
             lastMousePos.current = currentPos
         }
 
+        let scaleTimeout = null
+
         const smoothMouseMove = (e) => {
             const currentPos = { x: e.clientX, y: e.clientY }
             updateVelocity(currentPos)
@@ -198,10 +200,10 @@ export function SmoothCursor({
                 target.closest('textarea') ||
                 target.classList.contains('typewriter-text')
 
-            if (isTextElement) {
-                setCursorType('text')
-            } else {
-                setCursorType('default')
+            const nextType = isTextElement ? 'text' : 'default'
+            if (cursorTypeRef.current !== nextType) {
+                cursorTypeRef.current = nextType
+                setCursorType(nextType)
             }
 
             const speed = Math.sqrt(
@@ -211,7 +213,7 @@ export function SmoothCursor({
             cursorX.set(currentPos.x)
             cursorY.set(currentPos.y)
 
-            if (speed > 0.1 && cursorType === 'default') {
+            if (speed > 0.1 && cursorTypeRef.current === 'default') {
                 const currentAngle =
                     Math.atan2(velocity.current.y, velocity.current.x) * (180 / Math.PI) +
                     90
@@ -224,18 +226,15 @@ export function SmoothCursor({
                 previousAngle.current = currentAngle
 
                 scale.set(0.95)
-                setIsMoving(true)
 
-                const timeout = setTimeout(() => {
+                if (scaleTimeout) clearTimeout(scaleTimeout)
+                scaleTimeout = setTimeout(() => {
                     scale.set(1)
-                    setIsMoving(false)
                 }, 150)
-
-                return () => clearTimeout(timeout)
             }
         }
 
-        let rafId
+        let rafId = 0
         const throttledMouseMove = (e) => {
             if (rafId) return
 
@@ -246,14 +245,15 @@ export function SmoothCursor({
         }
 
         document.body.style.cursor = "none"
-        window.addEventListener("mousemove", throttledMouseMove)
+        window.addEventListener("mousemove", throttledMouseMove, { passive: true })
 
         return () => {
             window.removeEventListener("mousemove", throttledMouseMove)
             document.body.style.cursor = "auto"
             if (rafId) cancelAnimationFrame(rafId)
+            if (scaleTimeout) clearTimeout(scaleTimeout)
         }
-    }, [cursorX, cursorY, rotation, scale, cursorType])
+    }, [cursorX, cursorY, rotation, scale])
 
     const getCursorComponent = () => {
         switch (cursorType) {
@@ -268,8 +268,10 @@ export function SmoothCursor({
         <motion.div
             style={{
                 position: "fixed",
-                left: cursorX,
-                top: cursorY,
+                top: 0,
+                left: 0,
+                x: cursorX,
+                y: cursorY,
                 translateX: "-50%",
                 translateY: "-50%",
                 rotate: cursorType === 'default' ? rotation : 0,

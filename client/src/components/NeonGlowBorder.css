@@ -7,6 +7,7 @@
     overflow: hidden;
     isolation: isolate;
     display: flex;
+    transform: translateZ(0);
 }
 
 /* The rotating light beam */
@@ -25,6 +26,8 @@
             transparent 260deg);
     animation: rotate-beam var(--rotation-speed) linear infinite;
     z-index: 0;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* The ambient outer glow that follows the beam */
@@ -38,6 +41,7 @@
     z-index: -1;
     filter: blur(20px);
     pointer-events: none;
+    transform: translateZ(0);
 }
 
 .neon-glow-content {
@@ -46,7 +50,8 @@
     height: 100%;
     background: rgba(13, 17, 23, 0.85);
     /* Slightly darker for better text contrast */
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: calc(var(--radius) - var(--border-width));
     overflow: hidden;
     z-index: 1;
@@ -75,44 +80,8 @@
     display: none;
 }
 
-
-@keyframes rotate-beam {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes pulse-ambient {
-    from {
-        opacity: 0.05;
-        transform: scale(0.95);
-    }
-
-    to {
-        opacity: 0.15;
-        transform: scale(1.05);
-    }
-}
-
 /* Ensure glass effect from parent works inside */
 .neon-glow-content .glass-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%) !important;
     border: none !important;
-    /* Managed by wrapper now */
-}
-
-to {
-    opacity: 0.15;
-    transform: scale(1.05);
-}
-
-/* Ensure glass effect from parent works inside */
-.neon-glow-content .glass-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%) !important;
-    border: none !important;
-    /* Managed by wrapper now */
 }

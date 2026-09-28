@@ -23,7 +23,6 @@ export const ChromaGrid = ({
     const setY = useRef(null);
     const pos = useRef({ x: 0, y: 0 });
     const cardRefs = useRef([]);
-    const [centeredIndex, setCenteredIndex] = useState(null);
 
     const demo = [
         {
@@ -94,54 +93,6 @@ export const ChromaGrid = ({
         setY.current(pos.current.y);
     }, []);
 
-    /* Mobile: center card shows color (like hover on PC), others grayscale */
-    useEffect(() => {
-        const mql = window.matchMedia('(max-width: 768px)');
-        const isMobile = () => mql.matches;
-        if (!isMobile()) return;
-
-        let rafId = null;
-        const updateCenteredCard = () => {
-            if (!isMobile()) return;
-            rafId = requestAnimationFrame(() => {
-                const cards = cardRefs.current;
-                const len = data.length;
-                if (len === 0) return;
-                const vh = window.innerHeight / 2;
-                let closestIdx = 0;
-                let closestDist = Infinity;
-                for (let i = 0; i < len; i++) {
-                    const card = cards[i];
-                    if (!card || !card.getBoundingClientRect) continue;
-                    const rect = card.getBoundingClientRect();
-                    const centerY = rect.top + rect.height / 2;
-                    const dist = Math.abs(centerY - vh);
-                    if (dist < closestDist) {
-                        closestDist = dist;
-                        closestIdx = i;
-                    }
-                }
-                setCenteredIndex(closestIdx);
-            });
-        };
-
-        const handleResizeOrMediaChange = () => { if (isMobile()) updateCenteredCard(); };
-        updateCenteredCard();
-        window.addEventListener('scroll', updateCenteredCard, { passive: true });
-        window.addEventListener('touchmove', updateCenteredCard, { passive: true });
-        window.addEventListener('touchstart', updateCenteredCard, { passive: true });
-        window.addEventListener('resize', handleResizeOrMediaChange);
-        mql.addEventListener('change', handleResizeOrMediaChange);
-        return () => {
-            if (rafId) cancelAnimationFrame(rafId);
-            window.removeEventListener('scroll', updateCenteredCard);
-            window.removeEventListener('touchmove', updateCenteredCard);
-            window.removeEventListener('touchstart', updateCenteredCard);
-            window.removeEventListener('resize', handleResizeOrMediaChange);
-            mql.removeEventListener('change', handleResizeOrMediaChange);
-        };
-    }, [data.length]);
-
     const moveTo = (x, y) => {
         gsap.to(pos.current, {
             x,
@@ -184,12 +135,10 @@ export const ChromaGrid = ({
     };
 
     const handleCardMove = e => {
-        const card = e.currentTarget;
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+        const x = e.nativeEvent.offsetX;
+        const y = e.nativeEvent.offsetY;
+        e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+        e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
     };
 
     return (
@@ -216,7 +165,7 @@ export const ChromaGrid = ({
                         ease: [0.215, 0.61, 0.355, 1]
                     }}
                     ref={el => { cardRefs.current[i] = el; }}
-                    className={`chroma-card cursor-target ${centeredIndex === i ? 'chroma-card--centered' : ''}`}
+                    className="chroma-card cursor-target"
                     onMouseMove={handleCardMove}
                     onClick={() => handleCardClick(c.url)}
                     style={{

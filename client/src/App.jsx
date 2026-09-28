@@ -24,12 +24,22 @@ function App() {
     }, []);
 
     useEffect(() => {
+        let rafId = null;
         const handleMouseMove = (e) => {
-            document.body.style.setProperty('--pointer-x', `${e.clientX}px`);
-            document.body.style.setProperty('--pointer-y', `${e.clientY}px`);
+            if (rafId) return;
+            const x = e.clientX;
+            const y = e.clientY;
+            rafId = requestAnimationFrame(() => {
+                document.body.style.setProperty('--pointer-x', `${x}px`);
+                document.body.style.setProperty('--pointer-y', `${y}px`);
+                rafId = null;
+            });
         };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            if (rafId) cancelAnimationFrame(rafId);
+        };
     }, []);
 
     return (
