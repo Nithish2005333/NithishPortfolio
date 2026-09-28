@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import BackButton from '../components/BackButton';
 import LearnMoreButton from '../components/LearnMoreButton';
 import DiscoverButton from '../components/DiscoverButton';
-import { ArrowRight, Code2, Smartphone, Zap, Globe } from 'lucide-react';
+import { ArrowRight, Code2, Smartphone, Zap, Globe, Compass, Sparkles, BookOpen, Building2, ShoppingBag } from 'lucide-react';
 import ChromaGrid from '../components/ChromaGrid';
 
 const Projects = () => {
@@ -21,6 +21,102 @@ const Projects = () => {
             github: "https://github.com/Nithish2005333/Beverages",
             image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1773210977/Screenshot_2026-03-06_102511_sc5ar5.png",
             icon: <Smartphone size={40} />
+        },
+        {
+            title: "TripStart",
+            subtitle: "Luxury Travel • Curated Journeys • Booking",
+            handle: "Travel Platform",
+            category: "Travel & Hospitality",
+            description: "Curated luxury travel experiences and bespoke international and domestic itineraries with seamless booking.",
+            borderColor: "#06B6D4",
+            gradient: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
+            url: "https://tripstart.in/",
+            image: "/projects/tripstart.webp",
+            icon: <Compass size={40} />
+        },
+        {
+            title: "Agency Analog",
+            subtitle: "Brand Strategy • Creative Design • Web",
+            handle: "Creative Agency",
+            category: "Agency Website",
+            description: "A modern creative agency platform dedicated to human-centric brand design, immersive experiences, and digital strategy.",
+            borderColor: "#F43F5E",
+            gradient: "linear-gradient(135deg, #f43f5e 0%, #fb7185 100%)",
+            url: "http://www.agencyanalog.com/",
+            image: "/projects/agencyanalog.webp",
+            icon: <Sparkles size={40} />
+        },
+        {
+            title: "Saradhi Pubgrid",
+            subtitle: "E-Books • Rights Protection • Publishing",
+            handle: "Digital Library",
+            category: "E-Book Marketplace",
+            description: "A secure digital library and e-book marketplace for readers, publishers, and institutions with browser-based reading.",
+            borderColor: "#8B5CF6",
+            gradient: "linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)",
+            url: "https://saradhipubgrid.com/",
+            image: "/projects/saradhipubgrid.webp",
+            icon: <BookOpen size={40} />
+        },
+        {
+            title: "Sumathi Steel",
+            subtitle: "Steel & Hardwares • Industrial Supply",
+            handle: "Industrial Portal",
+            category: "Commercial",
+            description: "Comprehensive industrial web portal for steel, structural hardware solutions, and manufacturing supplies.",
+            borderColor: "#F59E0B",
+            gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
+            url: "https://sumathisteel.com/",
+            image: "/projects/sumathisteel.webp",
+            icon: <Building2 size={40} />
+        },
+        {
+            title: "Zenthora Global",
+            subtitle: "Real Estate • Land Development • Estates",
+            handle: "Estates & Realty",
+            category: "Real Estate",
+            description: "Premier real estate and land investment platform featuring transparent property portfolios and future-ready development.",
+            borderColor: "#10B981",
+            gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            url: "https://www.zenthoraglobal.com/",
+            image: "/projects/zenthoraglobal.webp",
+            icon: <Globe size={40} />
+        },
+        {
+            title: "Actify Aura",
+            subtitle: "Organic Wellness • Ayurvedic • Nutrition",
+            handle: "Wellness Hub",
+            category: "E-Commerce / Health",
+            description: "Curated organic wellness platform offering trusted supplements, Ayurvedic remedies, fitness essentials, and nutrition.",
+            borderColor: "#14B8A6",
+            gradient: "linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)",
+            url: "https://actifyaura.com/",
+            image: "/projects/actifyaura.webp",
+            icon: <ShoppingBag size={40} />
+        },
+        {
+            title: "Petals & Knots",
+            subtitle: "Floral Design • Luxury Weddings • Styling",
+            handle: "Design Studio",
+            category: "Events & Luxury",
+            description: "Design-led floral studio specializing in luxury destination weddings, experiential installations, and production.",
+            borderColor: "#E11D48",
+            gradient: "linear-gradient(135deg, #e11d48 0%, #be123c 100%)",
+            url: "http://petalsandknots.com/",
+            image: "/projects/petalsandknots.webp",
+            icon: <Sparkles size={40} />
+        },
+        {
+            title: "Max Code Softwares",
+            subtitle: "Web Platforms • AI Assistants • Software",
+            handle: "Software Studio",
+            category: "IT Services",
+            description: "Custom digital platforms, scalable web engineering, and AI-powered business assistants engineered for enterprise growth.",
+            borderColor: "#3B82F6",
+            gradient: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
+            url: "http://maxcodesoftwares.in/",
+            image: "/projects/maxcodesoftwares.webp",
+            icon: <Code2 size={40} />
         },
         {
             title: "Nimbus Cloud",
@@ -93,7 +189,7 @@ const Projects = () => {
             description: "Plan your trip now and save big with our car rental platform. Premium booking experience.",
             borderColor: "#EC4899",
             gradient: "linear-gradient(135deg, #f43f5e 0%, #fb923c 100%)",
-            url: "https://car-rental-one-taupe.vercel.app/",
+            url: "https://car-rental-gules-tau.vercel.app/",
             image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1770983003/Screenshot_2026-02-13_165628_ottkp8.png",
             icon: <Smartphone size={40} />
         },

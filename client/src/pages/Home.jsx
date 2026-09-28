@@ -9,7 +9,7 @@ import ProfileCard from '../components/ProfileCard';
 import DownloadButton from '../components/DownloadButton';
 import NeonGlowBorder from '../components/NeonGlowBorder';
 import ChromaGrid from '../components/ChromaGrid';
-import { ArrowRight, Code2, Sparkles, Smartphone, Zap, Globe, Cpu, Terminal, Braces, Hash, Monitor, Palette } from 'lucide-react';
+import { ArrowRight, Code2, Sparkles, Smartphone, Zap, Globe, Cpu, Terminal, Braces, Hash, Monitor, Palette, Compass } from 'lucide-react';
 import {
     SiHtml5, SiCss3, SiJavascript, SiReact, SiNodedotjs, SiMongodb,
     SiExpress, SiTailwindcss, SiSass, SiSolidity, SiEthereum,
@@ -37,43 +37,29 @@ const Home = () => {
             icon: <Smartphone size={40} />
         },
         {
-            title: "Nimbus Cloud",
-            subtitle: "React • Vercel • Cloud Services",
-            handle: "Cloud Platform",
-            category: "Web Application",
-            description: "A modern cloud platform showcasing seamless deployment and scalable architecture for web applications.",
-            url: "https://nimbus-cloud-liard.vercel.app/",
-            github: "https://github.com/Nithish2005333/NimbusCloud.git",
-            image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1771000699/690b4fa1-152f-4fad-8339-9b41b76046f6.png",
-            borderColor: "#0EA5E9",
-            gradient: "linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)",
-            icon: <Globe size={40} />
+            title: "TripStart",
+            subtitle: "Luxury Travel • Curated Journeys • Booking",
+            handle: "Travel Platform",
+            category: "Travel & Hospitality",
+            description: "Curated luxury travel experiences and bespoke international and domestic itineraries with seamless booking.",
+            url: "https://tripstart.in/",
+            image: "/projects/tripstart.webp",
+            borderColor: "#06B6D4",
+            gradient: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
+            icon: <Compass size={40} />
         },
         {
-            title: "Placement App",
-            subtitle: "React • Node.js • MongoDB • Express",
-            handle: "Full Stack App",
-            category: "Platform",
-            description: "An integrated career management hub providing students and admins with verified profile synchronization.",
-            url: "https://placementapp-0htf.onrender.com/",
-            github: "https://github.com/Nithish2005333/PlacementApp",
-            image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1770983002/Screenshot_2026-02-13_165525_ttrhif.png",
-            borderColor: "#3B82F6",
-            gradient: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
-            icon: <Code2 size={40} />
-        },
-        // {
-        //     title: "Car Rental",
-        //     subtitle: "React • SCSS • JavaScript",
-        //     handle: "Booking Engine",
-        //     category: "Web Application",
-        //     description: "A feature-complete booking engine for premium car rentals, featuring dynamic filtering and checkout flow.",
-        //     url: "https://car-rental-one-taupe.vercel.app/",
-        //     image: "https://res.cloudinary.com/di2c9rec3/image/upload/v1770983003/Screenshot_2026-02-13_165628_ottkp8.png",
-        //     borderColor: "#EC4899",
-        //     gradient: "linear-gradient(135deg, #f43f5e 0%, #fb923c 100%)",
-        //     icon: <Smartphone size={40} />
-        // }
+            title: "Agency Analog",
+            subtitle: "Brand Strategy • Creative Design • Web",
+            handle: "Creative Agency",
+            category: "Agency Website",
+            description: "A modern creative agency platform dedicated to human-centric brand design, immersive experiences, and digital strategy.",
+            url: "http://www.agencyanalog.com/",
+            image: "/projects/agencyanalog.webp",
+            borderColor: "#F43F5E",
+            gradient: "linear-gradient(135deg, #f43f5e 0%, #fb7185 100%)",
+            icon: <Sparkles size={40} />
+        }
     ];
 
     const techLogos = [
